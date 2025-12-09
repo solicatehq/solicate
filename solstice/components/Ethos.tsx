@@ -1,14 +1,20 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-export const Ethos: React.FC = () => {
+interface EthosProps {
+  text?: string;
+}
+
+export const Ethos: React.FC<EthosProps> = ({
+  text = "We shape ideas that linger like echoes in quiet rooms."
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
 
-  const words = "We shape ideas that linger like echoes in quiet rooms.".split(" ");
+  const words = text.split(" ");
 
   return (
     <section ref={containerRef} className="min-h-screen flex items-center justify-center px-6 md:px-20 py-24 bg-[#EEECE7]">
@@ -19,11 +25,11 @@ export const Ethos: React.FC = () => {
             const start = i / words.length;
             const end = start + (1 / words.length);
             const opacity = useTransform(scrollYProgress, [0.2 + (start * 0.5), 0.2 + (end * 0.5)], [0, 1]);
-            
+
             return (
               <span key={i} className="relative">
                 <span className="absolute inset-0 text-[#2E2E2E]/10 select-none">{word}</span>
-                <motion.span 
+                <motion.span
                   style={{ opacity }}
                   className="relative text-[#2E2E2E]"
                 >

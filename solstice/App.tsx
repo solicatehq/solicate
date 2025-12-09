@@ -10,6 +10,7 @@ import { Process } from './components/Process';
 import { Journal } from './components/Journal';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
+import { Ethos } from './components/Ethos';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -47,9 +48,10 @@ function App() {
 
       <main className="w-full relative z-10 bg-[#EEECE7]">
         <Hero />
+        <Ethos text="We shape ideas that linger like echoes in quiet rooms." />
         <SelectedWork />
         <Capabilities />
-        <Manifesto />
+        <Ethos text="Our principles are rooted in clarity, defined by honesty, and built to endure." />
         <Process />
         <Journal />
       </main>
