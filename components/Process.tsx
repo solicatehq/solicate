@@ -113,7 +113,11 @@ export const Process: React.FC = () => {
                             key={index}
                             className="relative z-10 flex flex-col items-center md:items-start group w-64 text-center md:text-left my-8 md:my-0"
                             style={{
-                                marginTop: index % 2 === 0 ? '0' : '200px', // Alternating height on desktop
+                                marginTop: (() => {
+                                    if (index === 1) return '-160px'; // Define: Even higher
+                                    if (index === 2) return '-370px'; // Shape: Even higher
+                                    return index % 2 === 0 ? '0' : '200px';
+                                })(),
                             }}
                         >
                             {/* The Dot */}
