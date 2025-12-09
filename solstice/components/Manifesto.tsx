@@ -14,7 +14,10 @@ export const Manifesto: React.FC = () => {
     const blur = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], ["2px", "0px", "0px", "4px"]);
 
     return (
-        <section ref={containerRef} className="min-h-[80vh] flex items-center justify-center py-32 px-4 md:px-20 bg-[#EEECE7]">
+        <section ref={containerRef} className="relative min-h-[80vh] flex items-center justify-center py-32 px-4 md:px-20 bg-[#EEECE7]">
+            <div className="absolute top-12 left-6 md:left-12 text-xs uppercase tracking-widest text-nordic-charcoal/50 z-20">
+                Manifesto
+            </div>
             <div className="max-w-6xl w-full text-center">
                 <motion.p
                     className="text-[4vw] md:text-[5.5vw] leading-[1.1] font-serif text-[#2E2E2E] hover-trigger cursor-none"

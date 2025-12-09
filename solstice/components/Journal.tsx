@@ -24,7 +24,10 @@ export const Journal: React.FC = () => {
   const rightColumn = entries.filter((_, i) => i % 2 !== 0);
 
   return (
-    <section ref={containerRef} className="py-32 px-6 md:px-20 bg-[#EEECE7] overflow-hidden">
+    <section ref={containerRef} className="relative py-32 px-6 md:px-20 bg-[#EEECE7] overflow-hidden">
+      <div className="absolute top-12 left-6 md:left-12 text-xs uppercase tracking-widest text-nordic-charcoal/50 z-20">
+        Journal
+      </div>
       <div className="flex justify-between items-baseline mb-24 border-b border-[#2E2E2E]/10 pb-8">
         <h2 className="font-serif-display text-5xl md:text-7xl text-[#2E2E2E]">Journal</h2>
         <span className="font-sans-ui text-[#2E2E2E]/60 hidden md:block">Thoughts & Fragments</span>
@@ -54,9 +57,9 @@ const JournalCard: React.FC<{ entry: JournalEntry }> = ({ entry }) => {
     <div className="group cursor-pointer hover-trigger">
       {entry.image ? (
         <div className="overflow-hidden mb-6 bg-[#DCD9D3]">
-          <img 
-            src={entry.image} 
-            alt={entry.title} 
+          <img
+            src={entry.image}
+            alt={entry.title}
             className="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-105 sepia-[0.3] group-hover:sepia-0"
           />
         </div>
