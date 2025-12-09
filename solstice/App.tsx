@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Hero } from './components/Hero';
 import { SelectedWork } from './components/SelectedWork';
 import { Capabilities } from './components/Capabilities';
+import { Manifesto } from './components/Manifesto'; // Added
 import { Process } from './components/Process';
 import { Journal } from './components/Journal';
 import { Footer } from './components/Footer';
@@ -48,6 +49,7 @@ function App() {
         <Hero />
         <SelectedWork />
         <Capabilities />
+        <Manifesto />
         <Process />
         <Journal />
       </main>
