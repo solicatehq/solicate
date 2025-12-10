@@ -1,5 +1,4 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
 import { JournalEntry } from '../types';
 
 const entries: JournalEntry[] = [
@@ -11,71 +10,76 @@ const entries: JournalEntry[] = [
 ];
 
 export const Journal: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const yLeft = useTransform(scrollYProgress, [0, 1], [0, -50]);
-  const yRight = useTransform(scrollYProgress, [0, 1], [100, -200]);
-
-  const leftColumn = entries.filter((_, i) => i % 2 === 0);
-  const rightColumn = entries.filter((_, i) => i % 2 !== 0);
-
   return (
-    <section ref={containerRef} className="relative py-32 px-6 md:px-20 bg-[#EEECE7] overflow-hidden">
-      <div className="absolute top-12 left-6 md:left-12 text-xs uppercase tracking-widest text-nordic-charcoal/50 z-20">
-        Journal
-      </div>
-      <div className="flex justify-between items-baseline mb-24 border-b border-[#2E2E2E]/10 pb-8">
-        <h2 className="font-serif-display text-5xl md:text-7xl text-[#2E2E2E]">Journal</h2>
-        <span className="font-sans-ui text-[#2E2E2E]/60 hidden md:block">Thoughts & Fragments</span>
-      </div>
+    <section className="relative w-full bg-[#EEECE7]">
+      <div className="flex flex-col md:flex-row min-h-screen">
+        {/* Sticky Left Column */}
+        <div className="w-full md:w-1/3 md:h-screen md:sticky md:top-0 p-6 md:p-12 flex flex-col justify-between border-r border-[#2E2E2E]/10">
+          <div>
+            <div className="text-xs uppercase tracking-widest text-nordic-charcoal/50 mb-4">
+              Journal
+            </div>
+            <h2 className="font-serif-display text-5xl md:text-6xl text-[#2E2E2E] leading-tight max-w-sm">
+              Thoughts & <br /><span className="italic text-[#A88C5D]">Fragments</span>
+            </h2>
+          </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-32">
-        {/* Left Column - Slow */}
-        <motion.div style={{ y: yLeft }} className="flex flex-col gap-16">
-          {leftColumn.map(entry => (
-            <JournalCard key={entry.id} entry={entry} />
-          ))}
-        </motion.div>
+          <div className="hidden md:block">
+            <p className="font-sans-ui text-sm text-[#2E2E2E]/60 max-w-xs">
+              A collection of essays, rapid experiments, and visual notes from our studio practice.
+            </p>
+          </div>
+        </div>
 
-        {/* Right Column - Fast */}
-        <motion.div style={{ y: yRight }} className="flex flex-col gap-16 md:mt-32">
-          {rightColumn.map(entry => (
-            <JournalCard key={entry.id} entry={entry} />
+        {/* Scrolling Right Column */}
+        <div className="w-full md:w-2/3 bg-[#EEECE7]">
+          {entries.map((entry, index) => (
+            <JournalRow key={entry.id} entry={entry} index={index} />
           ))}
-        </motion.div>
+
+          {/* Footer spacer for the scrolling section */}
+          <div className="h-32 flex items-center justify-center border-t border-[#2E2E2E]/10">
+            <span className="font-sans-ui text-xs text-[#2E2E2E]/40 uppercase tracking-widest">End of Journal</span>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
-const JournalCard: React.FC<{ entry: JournalEntry }> = ({ entry }) => {
+const JournalRow: React.FC<{ entry: JournalEntry; index: number }> = ({ entry, index }) => {
   return (
-    <div className="group cursor-pointer hover-trigger">
-      {entry.image ? (
-        <div className="overflow-hidden mb-6 bg-[#DCD9D3]">
-          <img
-            src={entry.image}
-            alt={entry.title}
-            className="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-105 sepia-[0.3] group-hover:sepia-0"
-          />
-        </div>
-      ) : (
-        <div className="mb-6 pt-12 border-t border-[#2E2E2E]/20">
-          <p className="font-serif-display text-2xl md:text-3xl leading-snug text-[#2E2E2E] group-hover:text-[#A88C5D] transition-colors">
-            "{entry.excerpt}"
-          </p>
-        </div>
-      )}
-      <div className="flex justify-between items-baseline">
-        <h3 className="font-sans-ui font-medium text-lg text-[#2E2E2E]">{entry.title}</h3>
+    <div className={`group border-b border-[#2E2E2E]/10 p-6 md:p-12 min-h-[50vh] flex flex-col justify-center transition-colors duration-500 hover:bg-[#E5E2DD]`}>
+      <div className="flex justify-between items-baseline mb-8">
+        <span className="font-sans-ui text-xs text-[#2E2E2E]/40 uppercase tracking-widest">0{index + 1}</span>
         <div className="flex gap-4 font-sans-ui text-xs text-[#2E2E2E]/50 uppercase tracking-widest">
           <span>{entry.type}</span>
           <span>{entry.date}</span>
         </div>
+      </div>
+
+      <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start md:items-center">
+        <div className="flex-1">
+          <h3 className="font-serif-display text-3xl md:text-5xl text-[#2E2E2E] mb-4 group-hover:text-[#A88C5D] transition-colors duration-300">
+            {entry.title}
+          </h3>
+          {entry.excerpt && (
+            <p className="font-sans-ui text-base text-[#2E2E2E]/70 max-w-md">
+              {entry.excerpt}
+            </p>
+          )}
+        </div>
+
+        {entry.image && (
+          <div className="w-full md:w-1/2 overflow-hidden aspect-[4/3] relative">
+            {/* "Roll up" effect simulation with simple hover or just static for now, as sticky is the main feature */}
+            <img
+              src={entry.image}
+              alt={entry.title}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+        )}
       </div>
     </div>
   );

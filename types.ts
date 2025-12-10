@@ -7,12 +7,12 @@ export interface Project {
 }
 
 export interface JournalEntry {
-  id: number;
+  id: string;
   title: string;
   date: string;
-  category: string;
-  image: string;
-  description: string;
+  type: string;
+  image?: string;
+  excerpt?: string;
 }
 
 export interface Capability {
