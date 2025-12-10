@@ -5,7 +5,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Hero } from './components/Hero';
 import { SelectedWork } from './components/SelectedWork';
 import { Capabilities } from './components/Capabilities';
-import { Manifesto } from './components/Manifesto'; // Added
 import { Process } from './components/Process';
 import { Journal } from './components/Journal';
 import { Footer } from './components/Footer';
@@ -47,7 +46,7 @@ function App() {
       <CustomCursor />
 
       <main
-        className="relative z-10 bg-[#EEECE7] shadow-2xl mb-[500px] md:mb-[600px] rounded-b-[3rem]"
+        className="relative z-10 bg-[#EEECE7] shadow-2xl rounded-b-[3rem]"
       >
         <Hero />
         <Ethos text="We shape ideas that settle like echoes in quiet rooms."
@@ -64,9 +63,7 @@ function App() {
         <Journal />
       </main>
 
-      <div className="fixed bottom-0 left-0 w-full z-0 h-[500px] md:h-[600px]">
-        <Footer />
-      </div>
+      <Footer />
 
       {/* Texture Overlay (Dust) */}
       <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.03] mix-blend-overlay"
