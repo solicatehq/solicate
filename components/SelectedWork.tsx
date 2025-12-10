@@ -79,11 +79,12 @@ export const SelectedWork: React.FC = () => {
                 ))}
 
                 {/* Visual Line at the end */}
-                <div className="w-[20vw] shrink-0 flex items-center justify-start pl-12">
+                <div className="w-[30vw] shrink-0 flex items-center justify-start pl-12 gap-6">
                     <svg width="180" height="12" className="overflow-visible">
                         <circle cx="4" cy="6" r="3" className="fill-transparent stroke-nordic-charcoal/30 stroke-1" />
                         <line x1="12" y1="6" x2="180" y2="6" className="stroke-nordic-charcoal/30 stroke-1" />
                     </svg>
+                    <span className="font-display text-xl text-nordic-charcoal/40 italic">Add Yours Here :D</span>
                 </div>
 
                 {/* Outro Spacer */}
