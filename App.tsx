@@ -46,7 +46,7 @@ function App() {
     <div className="antialiased selection:bg-[#2E2E2E] selection:text-[#EEECE7]">
       <CustomCursor />
 
-      <main className="w-full relative z-10 bg-[#EEECE7]">
+      <main className="relative z-10 bg-[#EEECE7] shadow-2xl mb-[500px] md:mb-[600px] rounded-b-[3rem] overflow-hidden">
         <Hero />
         <Ethos text="We shape ideas that settle like echoes in quiet rooms."
           highlightWords={["echoes"]}
@@ -62,7 +62,7 @@ function App() {
         <Journal />
       </main>
 
-      <div className="relative z-0">
+      <div className="fixed bottom-0 left-0 w-full z-0 h-[500px] md:h-[600px]">
         <Footer />
       </div>
 
