@@ -46,7 +46,7 @@ function App() {
     <div className="antialiased selection:bg-[#2E2E2E] selection:text-[#EEECE7]">
       <CustomCursor />
 
-      <main className="relative z-10 bg-[#EEECE7] shadow-2xl mb-[500px] md:mb-[600px] rounded-b-[3rem] overflow-hidden">
+      <main className="relative z-10 bg-[#EEECE7] shadow-2xl mb-[500px] md:mb-[600px]">
         <Hero />
         <Ethos text="We shape ideas that settle like echoes in quiet rooms."
           highlightWords={["echoes"]}
