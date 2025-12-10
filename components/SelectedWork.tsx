@@ -35,7 +35,7 @@ export const SelectedWork: React.FC = () => {
                 scrollTrigger: {
                     trigger: containerRef.current,
                     start: 'top top',
-                    end: () => `+=${track.scrollWidth - window.innerWidth}`,
+                    end: () => `+=${track.scrollWidth - window.innerWidth + 200}`, // Added 200px buffer
                     pin: true,
                     scrub: 1,
                     invalidateOnRefresh: true,
@@ -78,17 +78,26 @@ export const SelectedWork: React.FC = () => {
                     </div>
                 ))}
 
-                {/* Visual Line at the end */}
-                <div className="w-[30vw] shrink-0 flex items-center justify-start pl-12 gap-6">
-                    <svg width="180" height="12" className="overflow-visible">
-                        <circle cx="4" cy="6" r="3" className="fill-transparent stroke-nordic-charcoal/30 stroke-1" />
-                        <line x1="12" y1="6" x2="180" y2="6" className="stroke-nordic-charcoal/30 stroke-1" />
+                {/* Visual Line at the end - Now treated as a card */}
+                <div className="w-[70vw] md:w-[40vw] shrink-0 flex items-center justify-center gap-6 group cursor-pointer relative">
+                    <svg width="220" height="48" className="overflow-visible">
+                        <line x1="0" y1="24" x2="180" y2="24" className="stroke-nordic-charcoal/30 stroke-1" />
+
+                        {/* Dot */}
+                        <circle cx="186" cy="24" r="6" className="fill-transparent stroke-nordic-charcoal/30 stroke-1" />
+
+                        {/* Process-style Expanding Halo */}
+                        <circle
+                            cx="186" cy="24" r="24"
+                            style={{ transformOrigin: '186px 24px' }}
+                            className="fill-birchwood/20 scale-0 opacity-0 transition-all duration-500 group-hover:scale-100 group-hover:opacity-100"
+                        />
                     </svg>
-                    <span className="font-display text-xl text-nordic-charcoal/40 italic">Add Yours Here :D</span>
+                    <span className="font-display text-xl text-nordic-charcoal/40 italic transition-colors duration-300 group-hover:text-nordic-charcoal/80">Add Yours Here :D</span>
                 </div>
 
-                {/* Outro Spacer */}
-                <div className="w-[5vw] shrink-0" />
+                {/* Outro Spacer - Increased to keep the end visible longer */}
+                <div className="w-[20vw] shrink-0" />
             </div>
         </section>
     );
