@@ -67,7 +67,7 @@ export const SelectedWork: React.FC = () => {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group relative w-[70vw] md:w-[40vw] shrink-0 flex flex-col gap-6 interactive cursor-none"
+                        className="group relative w-[70vw] md:w-[40vw] shrink-0 flex flex-col gap-6 interactive cursor-none hover-trigger"
                         onMouseEnter={() => {
                             const video = videoRefs.current[index];
                             if (video) video.play();
@@ -102,8 +102,13 @@ export const SelectedWork: React.FC = () => {
                         </div>
                         <div className="flex justify-between items-baseline border-t border-soft-pewter pt-4 transition-colors duration-300 group-hover:border-nordic-charcoal">
                             <div>
-                                <h3 className="font-display text-lg md:text-xl text-nordic-charcoal">{project.title}</h3>
-                                <span className="text-sm text-nordic-charcoal/60">{project.role}</span>
+                                <h3
+                                    className="font-display text-lg md:text-xl text-nordic-charcoal inline-block"
+                                    data-cursor-variant="project-name"
+                                >
+                                    {project.title}
+                                </h3>
+                                <span className="text-sm text-nordic-charcoal/60 block">{project.role}</span>
                             </div>
                             <span className="text-sm font-mono text-nordic-charcoal/40">{project.year}</span>
                         </div>
