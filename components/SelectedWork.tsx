@@ -6,16 +6,17 @@ import { Project } from '../types';
 gsap.registerPlugin(ScrollTrigger);
 
 const projects: Project[] = [
-    { id: 1, title: 'Amtams', role: 'Brand Identity', year: '2023', image: 'https://picsum.photos/800/600?random=1', video: '/videos/amtams.mov', aspectRatio: 'aspect-video' },
-    { id: 2, title: 'Chlorophyll', role: 'E-Commerce', year: '2023', image: 'https://picsum.photos/800/600?random=2', video: '/videos/chlorophyll.mov', aspectRatio: 'aspect-video' },
-    { id: 3, title: 'Kajal', role: 'Digital Product', year: '2024', image: 'https://picsum.photos/800/600?random=3', video: '/videos/kajal.mov', aspectRatio: 'aspect-video' },
-    { id: 4, title: 'Kernelspace', role: 'System Design', year: '2024', image: 'https://picsum.photos/800/600?random=4', video: '/videos/kernelspace.mov', aspectRatio: 'aspect-video' },
-    { id: 5, title: 'Vaani', role: 'Product Design', year: '2024', image: 'https://picsum.photos/800/600?random=5', video: '/videos/vaani.mov', aspectRatio: 'aspect-video' },
+    { id: 1, title: 'Amtams', role: 'Brand Identity', year: '2023', image: '/images/amtams-img.png', video: '/videos/amtams.mov', aspectRatio: 'aspect-video' },
+    { id: 2, title: 'Chlorophyll', role: 'E-Commerce', year: '2023', image: '/images/chlorophyll-img.png', video: '/videos/chlorophyll.mov', aspectRatio: 'aspect-video' },
+    { id: 3, title: 'Kajal', role: 'Digital Product', year: '2024', image: '/images/kajal-img.png', video: '/videos/kajal.mov', aspectRatio: 'aspect-video' },
+    { id: 4, title: 'Kernelspace', role: 'System Design', year: '2024', image: '/images/kernelspace-img.png', video: '/videos/kernelspace.mov', aspectRatio: 'aspect-video' },
+    { id: 5, title: 'Vaani', role: 'Product Design', year: '2024', image: '/images/vaani-img.png', video: '/videos/vaani.mov', aspectRatio: 'aspect-video' },
 ];
 
 export const SelectedWork: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const trackRef = useRef<HTMLDivElement>(null);
+    const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -60,25 +61,41 @@ export const SelectedWork: React.FC = () => {
                 {/* Intro Spacer */}
                 <div className="w-[10vw] shrink-0" />
 
-                {projects.map((project) => (
-                    <div key={project.id} className="group relative w-[70vw] md:w-[40vw] shrink-0 flex flex-col gap-6 interactive cursor-none">
+                {projects.map((project, index) => (
+                    <div
+                        key={project.id}
+                        className="group relative w-[70vw] md:w-[40vw] shrink-0 flex flex-col gap-6 interactive cursor-none"
+                        onMouseEnter={() => {
+                            const video = videoRefs.current[index];
+                            if (video) video.play();
+                        }}
+                        onMouseLeave={() => {
+                            const video = videoRefs.current[index];
+                            if (video) {
+                                video.pause();
+                                video.currentTime = 0;
+                            }
+                        }}
+                    >
                         <div className={`relative ${project.aspectRatio || 'aspect-[4/3]'} overflow-hidden bg-faded-stone/20`}>
-                            {project.video ? (
+                            {/* Video Layer (Bottom) */}
+                            {project.video && (
                                 <video
+                                    ref={(el) => (videoRefs.current[index] = el)}
                                     src={project.video}
-                                    autoPlay
                                     muted
                                     loop
                                     playsInline
-                                    className="w-full h-full object-cover opacity-90 transition-all duration-700 ease-out group-hover:scale-105 group-hover:opacity-100"
-                                />
-                            ) : (
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="w-full h-full object-cover grayscale opacity-90 transition-all duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100"
+                                    className="absolute inset-0 w-full h-full object-cover"
                                 />
                             )}
+
+                            {/* Image Layer (Top) */}
+                            <img
+                                src={project.image}
+                                alt={project.title}
+                                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-out ${project.video ? 'group-hover:opacity-0' : 'group-hover:scale-105'}`}
+                            />
                         </div>
                         <div className="flex justify-between items-baseline border-t border-soft-pewter pt-4 transition-colors duration-300 group-hover:border-nordic-charcoal">
                             <div>
