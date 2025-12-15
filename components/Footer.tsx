@@ -124,7 +124,7 @@ export const Footer: React.FC = () => {
                   <span className="font-mono-ui text-[#A88C5D] text-xs uppercase tracking-[0.2em]">Inquiries</span>
                 </div>
 
-                <a href="mailto:hello@solstice.studio" className="block relative">
+                <a href="mailto:solicate@pecup.in" className="block relative">
                   <h2 className="font-serif-display text-5xl md:text-[8vw] lg:text-[7vw] leading-[0.9] text-[#EEECE7]">
                     Start a<br />
                     <span className="text-[#A88C5D] italic opacity-80 group-hover:opacity-100 transition-opacity duration-500">Conversation</span>
@@ -180,7 +180,7 @@ export const Footer: React.FC = () => {
             >
               <span className="text-[#EEECE7] uppercase tracking-widest text-[10px] opacity-40">Local Time</span>
               <p className="font-variant-numeric tabular-nums text-[#A88C5D] text-lg">{time}</p>
-              <p className="text-[10px] uppercase tracking-widest opacity-40 mt-4 md:mt-auto">© 2024 Solstice. All Rights Reserved.</p>
+              <p className="text-[10px] uppercase tracking-widest opacity-40 mt-4 md:mt-auto">© 2024 Solicate. All Rights Reserved.</p>
             </div>
 
           </div>
