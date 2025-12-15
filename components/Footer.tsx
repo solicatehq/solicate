@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 export const Footer: React.FC = () => {
   const [time, setTime] = useState("");
@@ -14,51 +14,6 @@ export const Footer: React.FC = () => {
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
   }, []);
-
-  const footerSections = {
-    socials: {
-      label: "Socials",
-      content: (
-        <div className="flex flex-col items-center gap-4">
-          {['Instagram', 'Twitter / X', 'LinkedIn'].map((item) => (
-            <h3 key={item} className="font-serif-display text-4xl md:text-5xl text-[#EEECE7] hover:text-[#A88C5D] transition-colors cursor-pointer">
-              {item}
-            </h3>
-          ))}
-        </div>
-      )
-    },
-    sitemap: {
-      label: "Sitemap",
-      content: (
-        <div className="flex flex-col items-center gap-4">
-          {['Selected Work', 'Capabilities', 'Process'].map((item) => (
-            <h3 key={item} className="font-serif-display text-4xl md:text-5xl text-[#EEECE7] hover:text-[#A88C5D] transition-colors cursor-pointer">
-              {item}
-            </h3>
-          ))}
-        </div>
-      )
-    },
-    location: {
-      label: "Location",
-      content: (
-        <div className="flex flex-col items-center gap-2">
-          <h3 className="font-serif-display text-5xl md:text-7xl text-[#EEECE7]">Kyoto, Japan</h3>
-          <p className="font-sans-ui text-[#A88C5D] text-lg tracking-widest mt-2">{`35.0116° N, 135.7681° E`}</p>
-        </div>
-      )
-    },
-    time: {
-      label: "Local Time",
-      content: (
-        <div className="flex flex-col items-center gap-2">
-          <h3 className="font-variant-numeric tabular-nums font-serif-display text-6xl md:text-8xl text-[#EEECE7]">{time}</h3>
-          <p className="font-sans-ui text-[#A88C5D] text-sm tracking-widest uppercase">Kyoto, Japan</p>
-        </div>
-      )
-    }
-  };
 
   return (
     <footer
@@ -75,43 +30,24 @@ export const Footer: React.FC = () => {
 
       {/* Main Content */}
       <div className="relative z-10 w-full max-w-[1800px] mx-auto flex flex-col items-center justify-center flex-grow py-20 min-h-[400px]">
-        <AnimatePresence mode="wait">
-          {hoveredSection && footerSections[hoveredSection as keyof typeof footerSections] ? (
-            <motion.div
-              key={hoveredSection}
-              initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
-              transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-              className="flex flex-col items-center gap-6 text-center"
-            >
-              <span className="font-mono-ui text-[#A88C5D] text-xs uppercase tracking-[0.2em]">
-                {footerSections[hoveredSection as keyof typeof footerSections].label}
-              </span>
-              {footerSections[hoveredSection as keyof typeof footerSections].content}
-            </motion.div>
-          ) : (
-            <motion.div
-              key="default"
-              initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
-              transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-              className="text-center group cursor-pointer"
-            >
-              <div className="mb-6 flex flex-col items-center gap-2">
-                <span className="font-mono-ui text-[#A88C5D] text-xs uppercase tracking-[0.2em]">Inquiries</span>
-              </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
+          transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+          className="text-center group cursor-pointer"
+        >
+          <div className="mb-6 flex flex-col items-center gap-2">
+            <span className="font-mono-ui text-[#A88C5D] text-xs uppercase tracking-[0.2em]">Inquiries</span>
+          </div>
 
-              <a href="mailto:solicate@pecup.in" className="block relative">
-                <h2 className="font-serif-display text-5xl md:text-[8vw] lg:text-[7vw] leading-[0.9] text-[#EEECE7]">
-                  Start a<br />
-                  <span className="text-[#A88C5D] italic opacity-80 group-hover:opacity-100 transition-opacity duration-500">Conversation</span>
-                </h2>
-              </a>
-            </motion.div>
-          )}
-        </AnimatePresence>
+          <a href="mailto:solicate@pecup.in" className="block relative">
+            <h2 className="font-serif-display text-5xl md:text-[8vw] lg:text-[7vw] leading-[0.9] text-[#EEECE7]">
+              Start a<br />
+              <span className="text-[#A88C5D] italic opacity-80 group-hover:opacity-100 transition-opacity duration-500">Conversation</span>
+            </h2>
+          </a>
+        </motion.div>
       </div>
 
       {/* Footer Grid */}
