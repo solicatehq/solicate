@@ -98,10 +98,11 @@ export const SelectedWork: React.FC = () => {
                                     }}
                                     streamType="on-demand"
                                     autoPlay={false}
+                                    controls={false}
                                     muted
                                     loop
                                     className="absolute inset-0 w-full h-full object-cover"
-                                    style={{ aspectRatio: '16/9' }} // Ensure aspect ratio matches
+                                    style={{ aspectRatio: '16/9', '--controls': 'none' } as React.CSSProperties} // Ensure aspect ratio matches
                                     ref={(el: any) => (videoRefs.current[index] = el)}
                                 />
                             ) : project.video && (
