@@ -7,6 +7,7 @@ export interface Project {
   video?: string;
   aspectRatio?: string;
   link?: string;
+  playbackId?: string;
 }
 
 export interface JournalEntry {

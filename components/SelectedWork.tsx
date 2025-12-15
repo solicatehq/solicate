@@ -1,4 +1,5 @@
 import React, { useLayoutEffect, useRef } from 'react';
+import MuxPlayer from "@mux/mux-player-react";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Project } from '../types';
@@ -6,17 +7,17 @@ import { Project } from '../types';
 gsap.registerPlugin(ScrollTrigger);
 
 const projects: Project[] = [
-    { id: 1, title: 'Amtams', role: 'Hometreats Bakery Shop', year: '2023', image: '/images/amtams-img.png', video: '/videos/amtams.mp4', aspectRatio: 'aspect-video', link: 'https://amtams.solicate.pecup.in' },
-    { id: 2, title: 'Chlorophyll', role: 'Organic Laboratory', year: '2023', image: '/images/chlorophyll-img.png', video: '/videos/chlorophyll.mp4', aspectRatio: 'aspect-video', link: 'https://chlorophyll.solicate.pecup.in' },
-    { id: 3, title: 'Kajal', role: 'UGC Portfolio', year: '2024', image: '/images/kajal-img.png', video: '/videos/kajal.mp4', aspectRatio: 'aspect-video', link: 'https://kajal.solicate.pecup.in' },
-    { id: 4, title: 'Kernelspace', role: 'Technical Lab', year: '2024', image: '/images/kernelspace-img.png', video: '/videos/kernelspace.mp4', aspectRatio: 'aspect-video', link: 'https://kernelspace.solicate.pecup.in' },
-    { id: 5, title: 'Vaani', role: 'Music Studio', year: '2024', image: '/images/vaani-img.png', video: '/videos/vaani.mp4', aspectRatio: 'aspect-video', link: 'https://vaani.solicate.pecup.in' },
+    { id: 1, title: 'Amtams', role: 'Hometreats Bakery Shop', year: '2023', image: '/images/amtams-img.png', video: '/videos/amtamss.mp4', aspectRatio: 'aspect-video', link: 'https://amtams.solicate.pecup.in', playbackId: '6SzwPC3JhX023IB1Uy4k301qgBKvWqEVKYeEEatjKygeI' },
+    { id: 2, title: 'Chlorophyll', role: 'Organic Laboratory', year: '2023', image: '/images/chlorophyll-img.png', video: '/videos/chlorophylll.mp4', aspectRatio: 'aspect-video', link: 'https://chlorophyll.solicate.pecup.in', playbackId: 'Pzu8MmdZbCkG173BqyFv3DWSGtO02OrN02woMeGdvJRX8' },
+    { id: 3, title: 'Kajal', role: 'UGC Portfolio', year: '2024', image: '/images/kajal-img.png', video: '/videos/kajal.mp4', aspectRatio: 'aspect-video', link: 'https://kajal.solicate.pecup.in', playbackId: '9UTutoAr02u1oS02yDpS00ZfGfYlwSOaj02OtqzUXzzFnnQ' },
+    { id: 4, title: 'Kernelspace', role: 'Technical Lab', year: '2024', image: '/images/kernelspace-img.png', video: '/videos/kernelspace.mp4', aspectRatio: 'aspect-video', link: 'https://kernelspace.solicate.pecup.in', playbackId: 'VnfaCxXQPMQVNYoIGUDBYPVewBbqmuM00vksMSuhBXdw' },
+    { id: 5, title: 'Vaani', role: 'Music Studio', year: '2024', image: '/images/vaani-img.png', video: '/videos/vaani.mp4', aspectRatio: 'aspect-video', link: 'https://vaani.solicate.pecup.in', playbackId: '8RNpU01rebBYdeGxyUa52HJSPPDBfjQFJJHEv9KV00RgE' },
 ];
 
 export const SelectedWork: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const trackRef = useRef<HTMLDivElement>(null);
-    const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+    const videoRefs = useRef<(HTMLVideoElement | any | null)[]>([]);
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -70,19 +71,40 @@ export const SelectedWork: React.FC = () => {
                         className="group relative w-[70vw] md:w-[40vw] shrink-0 flex flex-col gap-6 interactive cursor-none hover-trigger"
                         onMouseEnter={() => {
                             const video = videoRefs.current[index];
-                            if (video) video.play();
+                            if (video) {
+                                // Check if it's a Mux player (has play method but might behave differently) or standard video
+                                video.play?.();
+                            }
                         }}
                         onMouseLeave={() => {
                             const video = videoRefs.current[index];
                             if (video) {
-                                video.pause();
-                                video.currentTime = 0;
+                                video.pause?.();
+                                if (video.currentTime !== undefined) {
+                                    video.currentTime = 0;
+                                }
                             }
                         }}
                     >
                         <div className={`relative ${project.aspectRatio || 'aspect-[4/3]'} overflow-hidden bg-faded-stone/20`}>
                             {/* Video Layer (Bottom) */}
-                            {project.video && (
+                            {project.playbackId ? (
+                                <MuxPlayer
+                                    playbackId={project.playbackId}
+                                    metadata={{
+                                        video_id: `video-${project.id}`,
+                                        video_title: project.title,
+                                        viewer_user_id: "user-id-007",
+                                    }}
+                                    streamType="on-demand"
+                                    autoPlay={false}
+                                    muted
+                                    loop
+                                    className="absolute inset-0 w-full h-full object-cover"
+                                    style={{ aspectRatio: '16/9' }} // Ensure aspect ratio matches
+                                    ref={(el: any) => (videoRefs.current[index] = el)}
+                                />
+                            ) : project.video && (
                                 <video
                                     ref={(el) => (videoRefs.current[index] = el)}
                                     src={project.video}

@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mux/mux-player-react": "^3.10.1",
     "framer-motion": "^12.23.25",
     "gsap": "^3.14.1",
     "lenis": "^1.3.15",
