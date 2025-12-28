@@ -10,6 +10,7 @@ import { Journal } from './components/Journal';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
 import { Ethos } from './components/Ethos';
+import { Principles } from './components/Principles';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -54,7 +55,7 @@ function App() {
           highlightColor="#D35400" />
         <SelectedWork />
         <Capabilities />
-        <Ethos
+        <Principles
           text="Our principles are rooted in clarity, defined by honesty, and built to endure."
           highlightWords={["clarity", "honesty", "endure"]}
           highlightColor="#D35400"
