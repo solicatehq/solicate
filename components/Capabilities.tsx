@@ -98,10 +98,10 @@ const CapabilityOverlay: React.FC<{ capability: Capability; onClose: () => void 
                         </div>
                     </div>
 
-                    <button className="group flex items-center gap-4 text-[#2E2E2E] font-sans-ui uppercase tracking-widest text-sm hover:text-[#A88C5D] transition-colors mt-auto">
+                    <a href="mailto:mail@solicate.in" className="group flex items-center gap-4 text-[#2E2E2E] font-sans-ui uppercase tracking-widest text-sm hover:text-[#A88C5D] transition-colors mt-auto">
                         <span>{capability.ctaText || 'Start a project'}</span>
                         <ArrowRight size={16} className="transition-transform group-hover:translate-x-2" />
-                    </button>
+                    </a>
 
                     {/* Decorative large index number */}
                     <div className="absolute bottom-[-10%] right-[-10%] font-serif-display text-[20rem] text-[#2E2E2E]/5 pointer-events-none select-none">

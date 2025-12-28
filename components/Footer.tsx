@@ -41,7 +41,7 @@ export const Footer: React.FC = () => {
             <span className="font-mono-ui text-[#A88C5D] text-xs uppercase tracking-[0.2em]">Inquiries</span>
           </div>
 
-          <a href="mailto:solicate@pecup.in" className="block relative">
+          <a href="mailto:mail@solicate.in" className="block relative">
             <h2 className="font-serif-display text-5xl md:text-[8vw] lg:text-[7vw] leading-[0.9] text-[#EEECE7]">
               Start a<br />
               <span className="text-[#A88C5D] italic opacity-80 group-hover:opacity-100 transition-opacity duration-500">Conversation</span>
