@@ -125,6 +125,14 @@ const JournalRow: React.FC<{
 };
 
 const JournalOverlay: React.FC<{ entry: JournalEntry; onClose: () => void }> = ({ entry, onClose }) => {
+  // Lock body scroll when overlay is open
+  React.useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -139,7 +147,8 @@ const JournalOverlay: React.FC<{ entry: JournalEntry; onClose: () => void }> = (
         exit={{ x: '100%' }}
         transition={{ type: 'spring', damping: 30, stiffness: 300 }}
         onClick={(e) => e.stopPropagation()}
-        className="w-full md:w-[60vw] lg:w-[50vw] h-full bg-[#EEECE7] shadow-2xl overflow-y-auto p-8 md:p-16 flex flex-col relative"
+        data-lenis-prevent
+        className="w-full md:w-[60vw] lg:w-[50vw] h-full bg-[#EEECE7] shadow-2xl overflow-y-auto p-8 md:p-16 flex flex-col relative overscroll-contain"
       >
         <button
           onClick={onClose}
