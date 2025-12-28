@@ -14,31 +14,99 @@ const projects: Project[] = [
     { id: 5, title: 'Vaani', role: 'Music Studio', year: '2025', image: '/images/vaani-img.png', aspectRatio: 'aspect-video', link: 'https://vaani.solicate.pecup.in', playbackId: '8RNpU01rebBYdeGxyUa52HJSPPDBfjQFJJHEv9KV00RgE' },
 ];
 
+const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
+    const videoRef = useRef<any>(null); // Using any for MuxPlayer ref compatibility
+
+    const handleMouseEnter = () => {
+        if (videoRef.current?.play) {
+            videoRef.current.play();
+        }
+    };
+
+    const handleMouseLeave = () => {
+        if (videoRef.current?.pause) {
+            videoRef.current.pause();
+            if (videoRef.current.currentTime) {
+                videoRef.current.currentTime = 0;
+            }
+        }
+    };
+
+    return (
+        <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative w-[70vw] md:w-[40vw] shrink-0 flex flex-col gap-6 interactive cursor-none hover-trigger"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+        >
+            <div className={`relative ${project.aspectRatio || 'aspect-[4/3]'} overflow-hidden bg-faded-stone/20 rounded-sm`}>
+                {/* Video Layer (Bottom) */}
+                {project.playbackId && (
+                    <MuxPlayer
+                        playbackId={project.playbackId}
+                        metadata={{
+                            video_id: `video-${project.id}`,
+                            video_title: project.title,
+                            viewer_user_id: "user-id-007",
+                        }}
+                        streamType="on-demand"
+                        autoPlay={false}
+                        controls={false}
+                        muted
+                        loop
+                        className="absolute inset-0 w-full h-full object-cover"
+                        style={{ aspectRatio: '16/9', '--controls': 'none' } as React.CSSProperties}
+                        ref={videoRef}
+                    />
+                )}
+
+                {/* Image Layer (Top) */}
+                <img
+                    src={project.image}
+                    alt={project.title}
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-out ${project.playbackId ? 'group-hover:opacity-0' : 'group-hover:scale-105 transition-transform'}`}
+                />
+            </div>
+            <div className="flex justify-between items-baseline border-t border-soft-pewter pt-4 transition-colors duration-300 group-hover:border-nordic-charcoal">
+                <div>
+                    <h3
+                        className="font-display text-lg md:text-xl text-nordic-charcoal inline-block mr-3"
+                        data-cursor-variant="project-name"
+                    >
+                        {project.title}
+                    </h3>
+                    <span className="text-sm text-nordic-charcoal/60 block">{project.role}</span>
+                </div>
+                <span className="text-sm font-mono text-nordic-charcoal/40">{project.year}</span>
+            </div>
+        </a>
+    );
+};
+
 export const SelectedWork: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const trackRef = useRef<HTMLDivElement>(null);
-    const videoRefs = useRef<(HTMLVideoElement | any | null)[]>([]);
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
             const track = trackRef.current;
-            if (!track) return;
+            const container = containerRef.current;
+            if (!track || !container) return;
 
-            // Calculate the total width to scroll
-            // Using a function to recalculate on resize is ideal, but for this demo standard setup works
+            // Calculate movement amount: total width of track minus viewport width
+            // We scroll horizontally by this amount
+            const getScrollAmount = () => -(track.scrollWidth - window.innerWidth);
 
-            const getScrollAmount = () => {
-                let trackWidth = track.scrollWidth;
-                return -(trackWidth - window.innerWidth);
-            };
-
-            const tween = gsap.to(track, {
+            gsap.to(track, {
                 x: getScrollAmount,
                 ease: 'none',
                 scrollTrigger: {
-                    trigger: containerRef.current,
+                    trigger: container,
                     start: 'top top',
-                    end: () => `+=${track.scrollWidth - window.innerWidth + 200}`, // Added 200px buffer
+                    // The duration of the scroll is pinned to the distance we need to travel + some buffer
+                    end: () => `+=${track.scrollWidth - window.innerWidth + 200}`,
                     pin: true,
                     scrub: 1,
                     invalidateOnRefresh: true,
@@ -54,102 +122,38 @@ export const SelectedWork: React.FC = () => {
             {/* Label */}
             <div className="absolute top-12 left-6 md:left-12 z-20">
                 <div className="text-xs uppercase tracking-widest text-nordic-charcoal/50">
-                    Selected Work (01—05)
+                    Selected Work (01—{String(projects.length).padStart(2, '0')})
                 </div>
             </div>
 
-            <div ref={trackRef} className="flex gap-24 px-12 md:px-24 w-max h-full items-center">
+            <div ref={trackRef} className="flex gap-12 md:gap-24 px-12 md:px-24 w-max h-full items-center">
                 {/* Intro Spacer */}
-                <div className="w-[10vw] shrink-0" />
+                <div className="w-[5vw] md:w-[10vw] shrink-0" />
 
-                {projects.map((project, index) => (
-                    <a
-                        key={project.id}
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group relative w-[70vw] md:w-[40vw] shrink-0 flex flex-col gap-6 interactive cursor-none hover-trigger"
-                        onMouseEnter={() => {
-                            const video = videoRefs.current[index];
-                            if (video) {
-                                // Check if it's a Mux player (has play method but might behave differently) or standard video
-                                video.play?.();
-                            }
-                        }}
-                        onMouseLeave={() => {
-                            const video = videoRefs.current[index];
-                            if (video) {
-                                video.pause?.();
-                                if (video.currentTime !== undefined) {
-                                    video.currentTime = 0;
-                                }
-                            }
-                        }}
-                    >
-                        <div className={`relative ${project.aspectRatio || 'aspect-[4/3]'} overflow-hidden bg-faded-stone/20`}>
-                            {/* Video Layer (Bottom) */}
-                            {project.playbackId && (
-                                <MuxPlayer
-                                    playbackId={project.playbackId}
-                                    metadata={{
-                                        video_id: `video-${project.id}`,
-                                        video_title: project.title,
-                                        viewer_user_id: "user-id-007",
-                                    }}
-                                    streamType="on-demand"
-                                    autoPlay={false}
-                                    controls={false}
-                                    muted
-                                    loop
-                                    className="absolute inset-0 w-full h-full object-cover"
-                                    style={{ aspectRatio: '16/9', '--controls': 'none' } as React.CSSProperties} // Ensure aspect ratio matches
-                                    ref={(el: any) => (videoRefs.current[index] = el)}
-                                />
-                            )}
-
-                            {/* Image Layer (Top) */}
-                            <img
-                                src={project.image}
-                                alt={project.title}
-                                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-out ${project.playbackId ? 'group-hover:opacity-0' : 'group-hover:scale-105'}`}
-                            />
-                        </div>
-                        <div className="flex justify-between items-baseline border-t border-soft-pewter pt-4 transition-colors duration-300 group-hover:border-nordic-charcoal">
-                            <div>
-                                <h3
-                                    className="font-display text-lg md:text-xl text-nordic-charcoal inline-block"
-                                    data-cursor-variant="project-name"
-                                >
-                                    {project.title}
-                                </h3>
-                                <span className="text-sm text-nordic-charcoal/60 block">{project.role}</span>
-                            </div>
-                            <span className="text-sm font-mono text-nordic-charcoal/40">{project.year}</span>
-                        </div>
-                    </a>
+                {projects.map((project) => (
+                    <ProjectCard key={project.id} project={project} />
                 ))}
 
-                {/* Visual Line at the end - Now treated as a card */}
+                {/* 'Add Yours' Card */}
                 <div className="w-[70vw] md:w-[40vw] shrink-0 flex items-center justify-center gap-6 group cursor-pointer relative">
                     <svg width="220" height="48" className="overflow-visible">
                         <line x1="0" y1="24" x2="180" y2="24" className="stroke-nordic-charcoal/30 stroke-1" />
-
-                        {/* Dot */}
                         <circle cx="186" cy="24" r="6" className="fill-transparent stroke-nordic-charcoal/30 stroke-1" />
-
-                        {/* Process-style Expanding Halo */}
                         <circle
                             cx="186" cy="24" r="24"
                             style={{ transformOrigin: '186px 24px' }}
                             className="fill-birchwood/20 scale-0 opacity-0 transition-all duration-500 group-hover:scale-100 group-hover:opacity-100"
                         />
                     </svg>
-                    <span className="font-display text-xl text-nordic-charcoal/40 italic transition-colors duration-300 group-hover:text-nordic-charcoal/80">Add Yours Here :D</span>
+                    <span className="font-display text-xl text-nordic-charcoal/40 italic transition-colors duration-300 group-hover:text-nordic-charcoal/80">
+                        Add Yours here :D
+                    </span>
                 </div>
 
-                {/* Outro Spacer - Increased to keep the end visible longer */}
+                {/* Outro Spacer */}
                 <div className="w-[20vw] shrink-0" />
             </div>
         </section>
     );
 };
+
