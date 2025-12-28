@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface Project {
   id: number;
   title: string;
@@ -17,6 +19,8 @@ export interface JournalEntry {
   type: string;
   image?: string;
   excerpt?: string;
+  content?: React.ReactNode;
+  images?: string[];
 }
 
 export interface Capability {
