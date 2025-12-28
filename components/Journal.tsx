@@ -6,74 +6,74 @@ import { X } from 'lucide-react';
 const entries: JournalEntry[] = [
   {
     id: 'j1',
-    title: 'Digital Ecology',
+    title: 'Empathy Engines',
     type: 'Philosophy',
-    date: 'Dec 14',
-    excerpt: 'Building sustainable digital ecosystems that grow with your business.',
+    date: 'Dec 20',
+    excerpt: 'Why we simulate user frustration to build better paths.',
     content: (
       <>
-        <p className="mb-6">We view software not as static artifacts but as living organisms. A "launch" is merely a birth; the real work lies in nurturing the system as it interacts with real users and evolving market conditions.</p>
-        <p className="mb-6">Our approach to "Digital Ecology" prizes resilience over rigidity. We build component systems that can adapt, scale, and reconfigure themselves without crumbling under technical debt.</p>
-        <p>This mindset shifts the focus from "pixel perfection" to "systemic health," ensuring that your digital presence remains robust and relevant for years, not just weeks.</p>
+        <p className="mb-6">Data tells us *what* happened. Empathy tells us *why*. We regularly conduct "frustration audits," where we intentionally stress-test our designs to find the breaking points of user patience.</p>
+        <p className="mb-6">It's not enough to be functional. Software must be forgiving. It should understand that humans make mistakes, get distracted, and change their minds.</p>
+        <p>Our goal is to build "Empathy Engines"—interfaces that anticipate user needs and offer help before it's asked for, turning potential friction into moments of connection.</p>
       </>
     )
   },
   {
     id: 'j2',
-    title: 'The Craft of Motion',
-    type: 'Interaction',
-    date: 'Nov 28',
-    image: 'https://picsum.photos/600/800?random=40',
+    title: 'Paper Prototypes',
+    type: 'Process',
+    date: 'Dec 08',
+    image: 'https://picsum.photos/600/800?random=50',
     content: (
       <>
-        <p className="mb-6">Motion is often treated as garnish—sprinkled on at the end to make things "pop." At Solicate, we treat motion as a core material of the interface.</p>
+        <p className="mb-6">Before we write a single line of code, we draw. There is a directness to pencil on paper that pixels cannot replicate.</p>
         <div className="grid grid-cols-2 gap-4 my-8">
-          <img src="https://picsum.photos/400/600?random=110" className="w-full h-auto object-cover rounded-lg" />
-          <img src="https://picsum.photos/400/600?random=111" className="w-full h-auto object-cover rounded-lg mt-8" />
+          <img src="https://picsum.photos/400/600?random=120" className="w-full h-auto object-cover rounded-lg" />
+          <img src="https://picsum.photos/400/600?random=121" className="w-full h-auto object-cover rounded-lg mt-8" />
         </div>
-        <p>Meaningful transitions provide context. They explain where an element came from and where it's going. They reduce cognitive load by smoothing the mental gap between states. We choreograph every interaction to feel weightless yet substantial.</p>
+        <p>This "low-fidelity" phase is crucial. It keeps us honest. Without the distraction of colors and shadows, we are forced to grapple with the raw flow and logic of the experience. We keep these sketches as a reminder of the human hand behind the digital curtain.</p>
       </>
     )
   },
   {
     id: 'j3',
-    title: 'Beyond the Grid',
+    title: 'The warmth of noise',
     type: 'Design',
-    date: 'Nov 12',
-    excerpt: 'Breaking free from standard layouts to tell better stories.',
+    date: 'Nov 25',
+    excerpt: 'Adding texture to a flat digital world.',
     content: (
       <>
-        <p className="mb-6">The web has standardized around the 12-column grid. While effective, it can lead to a homogenization of experience. We strive to break the grid meaningfully—not for the sake of chaos, but to direct attention.</p>
-        <p>By contrasting rigid structure with organic placement, we create visual tension that guides the eye. It's about finding the balance between predictability (usability) and surprise (delight).</p>
+        <p className="mb-6">Digital perfection is cold. A perfect white background is sterile. We are experimenting with introducing subtle noise, grain, and organic imperfections into our UI surfaces.</p>
+        <p>These textures mimic the physical world—paper, stone, canvas. They subconsciously signal to the user that this space was crafted, not just rendered. It brings a "human touch" to the cold glass of a smartphone screen.</p>
       </>
     )
   },
   {
     id: 'j4',
-    title: 'Engineering Trust',
-    type: 'Technology',
-    date: 'Nov 08',
-    image: 'https://picsum.photos/600/800?random=41',
+    title: 'Coffee Shop UX',
+    type: 'Culture',
+    date: 'Nov 12',
+    image: 'https://picsum.photos/600/800?random=52',
     content: (
       <>
-        <p className="mb-6">Trust is the currency of the digital age. It is earned in milliseconds—by how fast a page loads, how securely data is handled, and how reliably a transaction completes.</p>
+        <p className="mb-6">The best work doesn't always happen at a desk. We encourage our team to work from the "third places"—cafes, parks, libraries.</p>
         <div className="aspect-video w-full overflow-hidden rounded-xl my-6 bg-gray-100">
-          <img src="https://picsum.photos/800/450?random=210" className="w-full h-full object-cover" />
+          <img src="https://picsum.photos/800/450?random=220" className="w-full h-full object-cover" />
         </div>
-        <p>Our engineering standards are rigorous because we know that a broken link is a broken promise. We obsess over performance budgets, accessibility compliances, and secure architectures so your users can focus on your value, not your infrastructure.</p>
+        <p>Observing people in these environments teaches us about real-world interruptions. How does an app perform when you're balancing a latte and a laptop? How readable is the text in sunlight? designing for the real world means being in it.</p>
       </>
     )
   },
   {
     id: 'j5',
-    title: 'The Human Loop',
+    title: 'Conversations > Code',
     type: 'Strategy',
-    date: 'Nov 01',
-    excerpt: 'Why AI will never replace the empathy of a human designer.',
+    date: 'Nov 03',
+    excerpt: 'Why the best feature is often a conversation.',
     content: (
       <>
-        <p className="mb-6">As definitive artificial intelligence integrates into our workflows, the premium on human empathy skyrockets. We use AI to automate the mundane, liberating our minds to tackle the meaningful.</p>
-        <p>We design for humans, with humans. No algorithm can predict the subtle emotional response to a brand story or the cultural nuance of a campaign. We remain proudly, stubbornly human-centric.</p>
+        <p className="mb-6">We often solve problems with more code. But sometimes, the solution is better copy, or a simpler explanation, or removing the feature entirely.</p>
+        <p>We approach every technical challenge as a conversation. "What is the user trying to say?" "How should the system respond?" When we frame it this way, development becomes less about logic gates and more about language and listening.</p>
       </>
     )
   },
