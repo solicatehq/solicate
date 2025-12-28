@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Capability } from '../types';
 
 const capabilities: Capability[] = [
@@ -10,48 +10,47 @@ const capabilities: Capability[] = [
 ];
 
 export const Capabilities: React.FC = () => {
-    const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-    const toggleAccordion = (index: number) => {
-        setActiveIndex(activeIndex === index ? null : index);
-    };
-
     return (
-        <section id="capabilities" className="relative py-24 px-6 md:px-24 bg-arctic-linen min-h-screen flex flex-col justify-center">
-            <div className="absolute top-12 left-6 md:left-12 text-xs uppercase tracking-widest text-nordic-charcoal/50 z-20">
+        <section id="capabilities" className="relative py-32 px-6 md:px-24 bg-[#EEECE7] min-h-screen flex flex-col justify-center">
+            <div className="absolute top-12 left-6 md:left-12 text-xs uppercase tracking-widest text-[#2E2E2E]/50 z-20">
                 Capabilities
             </div>
 
-            <div className="flex flex-col w-full max-w-4xl mx-auto">
-                {capabilities.map((item, index) => (
-                    <div
-                        key={index}
-                        className="border-b border-soft-pewter last:border-b-0 group"
-                    >
-                        <button
-                            onClick={() => toggleAccordion(index)}
-                            className={`w-full text-left py-8 md:py-10 flex justify-between items-center transition-all duration-500 interactive hover:pl-2 ${activeIndex !== null && activeIndex !== index ? 'opacity-40' : 'opacity-100'}`}
-                        >
-                            <span className="font-display text-2xl md:text-4xl text-nordic-charcoal">{item.title}</span>
-                            <span className={`text-xl transition-transform duration-500 ${activeIndex === index ? 'rotate-45 text-birchwood' : 'text-soft-pewter'}`}>
-                                +
-                            </span>
-                        </button>
+            <div className="max-w-7xl mx-auto w-full">
+                <div className="mb-20">
+                    <h2 className="font-serif-display text-5xl md:text-7xl text-[#2E2E2E] leading-[0.9] max-w-4xl">
+                        Holistic design <br />
+                        <span className="text-[#A88C5D] italic">ecosystems</span>
+                    </h2>
+                </div>
 
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    {capabilities.map((item, index) => (
                         <div
-                            className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${activeIndex === index ? 'max-h-64 opacity-100 mb-8' : 'max-h-0 opacity-0'}`}
+                            key={index}
+                            className={`group relative p-8 md:p-12 border border-[#2E2E2E]/10 flex flex-col justify-between min-h-[320px] transition-all duration-500 hover:bg-[#E5E2DD] hover:border-[#2E2E2E]/20 ${index === 0 ? 'md:col-span-2' : ''}`}
                         >
-                            <ul className="flex flex-col md:flex-row gap-4 md:gap-12 pl-2">
-                                {item.description.map((desc, i) => (
-                                    <li key={i} className="flex items-center gap-2 text-nordic-charcoal/70 font-light text-sm md:text-base">
-                                        <span className="w-1 h-1 bg-birchwood rounded-full" />
-                                        {desc}
-                                    </li>
-                                ))}
-                            </ul>
+                            <div className="mb-8">
+                                <h3 className="font-serif-display text-3xl md:text-4xl text-[#2E2E2E] mb-6 group-hover:translate-x-2 transition-transform duration-500">
+                                    {item.title}
+                                </h3>
+                                <ul className="flex flex-wrap gap-2">
+                                    {item.description.map((desc, i) => (
+                                        <li key={i} className="px-3 py-1 rounded-full border border-[#2E2E2E]/20 text-[#2E2E2E]/70 text-xs md:text-sm uppercase tracking-wide group-hover:border-[#2E2E2E]/40 transition-colors duration-500">
+                                            {desc}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <div className="w-8 h-8 rounded-full border border-[#2E2E2E]/20 flex items-center justify-center self-end group-hover:bg-[#2E2E2E] group-hover:text-[#EEECE7] transition-all duration-500">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="transition-transform duration-500 group-hover:rotate-45">
+                                    <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" strokeWidth="1" />
+                                </svg>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </section>
     );
