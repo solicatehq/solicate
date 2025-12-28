@@ -26,4 +26,7 @@ export interface JournalEntry {
 export interface Capability {
   title: string;
   description: string[];
+  fullDescription?: string;
+  deliverables?: string[];
+  ctaText?: string;
 }
