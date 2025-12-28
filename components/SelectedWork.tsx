@@ -7,11 +7,61 @@ import { Project } from '../types';
 gsap.registerPlugin(ScrollTrigger);
 
 const projects: Project[] = [
-    { id: 1, title: 'Amtams', role: 'Hometreats Bakery Shop', year: '2025', image: '/images/amtams-img.png', aspectRatio: 'aspect-video', link: 'https://amtams.solicate.pecup.in', playbackId: '6SzwPC3JhX023IB1Uy4k301qgBKvWqEVKYeEEatjKygeI' },
-    { id: 2, title: 'Chlorophyll', role: 'Organic Laboratory', year: '2025', image: '/images/chlorophyll-img.png', aspectRatio: 'aspect-video', link: 'https://chlorophyll.solicate.pecup.in', playbackId: 'Pzu8MmdZbCkG173BqyFv3DWSGtO02OrN02woMeGdvJRX8' },
-    { id: 3, title: 'Kajal', role: 'UGC Portfolio', year: '2025', image: '/images/kajal-img.png', aspectRatio: 'aspect-video', link: 'https://kajal.solicate.pecup.in', playbackId: '9UTutoAr02u1oS02yDpS00ZfGfYlwSOaj02OtqzUXzzFnnQ' },
-    { id: 4, title: 'Kernelspace', role: 'Technical Lab', year: '2025', image: '/images/kernelspace-img.png', aspectRatio: 'aspect-video', link: 'https://kernelspace.solicate.pecup.in', playbackId: 'VnfaCxXQPMQVNYoIGUDBYPVewBbqmuM00vksMSuhBXdw' },
-    { id: 5, title: 'Vaani', role: 'Music Studio', year: '2025', image: '/images/vaani-img.png', aspectRatio: 'aspect-video', link: 'https://vaani.solicate.pecup.in', playbackId: '8RNpU01rebBYdeGxyUa52HJSPPDBfjQFJJHEv9KV00RgE' },
+    {
+        id: 1,
+        title: 'Amtams',
+        role: 'Hometreats Bakery Shop',
+        year: '2025',
+        image: '/images/amtams-img.png',
+        aspectRatio: 'aspect-video',
+        link: 'https://amtams.solicate.pecup.in',
+        playbackId: '6SzwPC3JhX023IB1Uy4k301qgBKvWqEVKYeEEatjKygeI',
+        description: 'A cozy digital storefront for artisanal baked goods, featuring warm aesthetics and seamless ordering.'
+    },
+    {
+        id: 2,
+        title: 'Chlorophyll',
+        role: 'Organic Laboratory',
+        year: '2025',
+        image: '/images/chlorophyll-img.png',
+        aspectRatio: 'aspect-video',
+        link: 'https://chlorophyll.solicate.pecup.in',
+        playbackId: 'Pzu8MmdZbCkG173BqyFv3DWSGtO02OrN02woMeGdvJRX8',
+        description: 'An immersive platform for an organic laboratory, highlighting sustainable practices through visual storytelling.'
+    },
+    {
+        id: 3,
+        title: 'Kajal',
+        role: 'UGC Portfolio',
+        year: '2025',
+        image: '/images/kajal-img.png',
+        aspectRatio: 'aspect-video',
+        link: 'https://kajal.solicate.pecup.in',
+        playbackId: '9UTutoAr02u1oS02yDpS00ZfGfYlwSOaj02OtqzUXzzFnnQ',
+        description: 'A dynamic portfolio showcasing user-generated content with a focus on bold typography and fluid transitions.'
+    },
+    {
+        id: 4,
+        title: 'Kernelspace',
+        role: 'Technical Lab',
+        year: '2025',
+        image: '/images/kernelspace-img.png',
+        aspectRatio: 'aspect-video',
+        link: 'https://kernelspace.solicate.pecup.in',
+        playbackId: 'VnfaCxXQPMQVNYoIGUDBYPVewBbqmuM00vksMSuhBXdw',
+        description: 'A cutting-edge interface for a tech lab, emphasizing precision, data visualization, and modern design principles.'
+    },
+    {
+        id: 5,
+        title: 'Vaani',
+        role: 'Music Studio',
+        year: '2025',
+        image: '/images/vaani-img.png',
+        aspectRatio: 'aspect-video',
+        link: 'https://vaani.solicate.pecup.in',
+        playbackId: '8RNpU01rebBYdeGxyUa52HJSPPDBfjQFJJHEv9KV00RgE',
+        description: 'A sonic visual experience for a music studio, capturing the essence of sound through rhythmically paced motion.'
+    },
 ];
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
@@ -69,15 +119,20 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
                     className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-out ${project.playbackId ? 'group-hover:opacity-0' : 'group-hover:scale-105 transition-transform'}`}
                 />
             </div>
-            <div className="flex justify-between items-baseline border-t border-soft-pewter pt-4 transition-colors duration-300 group-hover:border-nordic-charcoal">
-                <div>
+            <div className="flex justify-between items-start border-t border-soft-pewter pt-4 transition-colors duration-300 group-hover:border-nordic-charcoal">
+                <div className="max-w-[80%]">
                     <h3
                         className="font-display text-lg md:text-xl text-nordic-charcoal inline-block mr-3"
                         data-cursor-variant="project-name"
                     >
                         {project.title}
                     </h3>
-                    <span className="text-sm text-nordic-charcoal/60 block">{project.role}</span>
+                    <span className="text-sm text-nordic-charcoal/60 block mb-2">{project.role}</span>
+                    {project.description && (
+                        <p className="text-xs md:text-sm text-nordic-charcoal/50 leading-relaxed max-w-md">
+                            {project.description}
+                        </p>
+                    )}
                 </div>
                 <span className="text-sm font-mono text-nordic-charcoal/40">{project.year}</span>
             </div>
