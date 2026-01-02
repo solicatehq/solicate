@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Phone, Mail, Instagram } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const [time, setTime] = useState("");
   const [hoveredSection, setHoveredSection] = useState<string | null>(null);
+  const [showContactOptions, setShowContactOptions] = useState(false);
 
   useEffect(() => {
     const updateTime = () => {
@@ -41,12 +43,52 @@ export const Footer: React.FC = () => {
             <span className="font-mono-ui text-[#A88C5D] text-xs uppercase tracking-[0.2em]">Inquiries</span>
           </div>
 
-          <a href="mailto:mail@solicate.in" className="block relative">
-            <h2 className="font-serif-display text-5xl md:text-[8vw] lg:text-[7vw] leading-[0.9] text-[#EEECE7]">
-              Start a<br />
-              <span className="text-[#A88C5D] italic opacity-80 group-hover:opacity-100 transition-opacity duration-500">Conversation</span>
-            </h2>
-          </a>
+          <div className="relative w-fit mx-auto">
+            <button
+              onClick={() => setShowContactOptions(!showContactOptions)}
+              className="block relative text-center mx-auto"
+            >
+              <h2 className="font-serif-display text-5xl md:text-[8vw] lg:text-[7vw] leading-[0.9] text-[#EEECE7]">
+                Start a<br />
+                <span className="text-[#A88C5D] italic opacity-80 group-hover:opacity-100 transition-opacity duration-500">Conversation</span>
+              </h2>
+            </button>
+
+            <AnimatePresence>
+              {showContactOptions && (
+                <>
+                  <div className="fixed inset-0 z-40" onClick={() => setShowContactOptions(false)} />
+                  <motion.div
+                    initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute bottom-full left-1/2 -translate-x-1/2 mb-8 w-72 bg-[#1C1C1C] shadow-2xl p-2 rounded-lg z-50 border border-[#EEECE7]/10"
+                  >
+                    <div className="flex flex-col gap-1">
+                      {[
+                        { label: 'Book a call', href: 'https://cal.com/solicate', icon: Phone },
+                        { label: 'Send a mail', href: 'mailto:mail@solicate.in', icon: Mail },
+                        { label: 'Send a dm', href: 'https://instagram.com/solicate.in', icon: Instagram }
+                      ].map((option, idx) => (
+                        <a
+                          key={idx}
+                          href={option.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-4 px-4 py-4 text-[#EEECE7] hover:bg-[#EEECE7]/5 rounded-md transition-colors group/item text-left"
+                          onClick={() => setShowContactOptions(false)}
+                        >
+                          <option.icon size={18} className="text-[#A88C5D] group-hover/item:scale-110 transition-transform" />
+                          <span className="font-sans-ui text-base tracking-wide">{option.label}</span>
+                        </a>
+                      ))}
+                    </div>
+                  </motion.div>
+                </>
+              )}
+            </AnimatePresence>
+          </div>
         </motion.div>
       </div>
 

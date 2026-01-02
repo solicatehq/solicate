@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Capability } from '../types';
 import { AnimatePresence, motion } from 'framer-motion';
-import { X, ArrowRight } from 'lucide-react';
+import { X, ArrowRight, Phone, Mail, Instagram } from 'lucide-react';
 
 const capabilities: Capability[] = [
     {
@@ -42,6 +42,8 @@ const capabilities: Capability[] = [
 ];
 
 const CapabilityOverlay: React.FC<{ capability: Capability; onClose: () => void }> = ({ capability, onClose }) => {
+    const [showContactOptions, setShowContactOptions] = useState(false);
+
     useEffect(() => {
         document.body.style.overflow = 'hidden';
         return () => {
@@ -98,10 +100,50 @@ const CapabilityOverlay: React.FC<{ capability: Capability; onClose: () => void 
                         </div>
                     </div>
 
-                    <a href="mailto:mail@solicate.in" className="group flex items-center gap-4 text-[#2E2E2E] font-sans-ui uppercase tracking-widest text-sm hover:text-[#A88C5D] transition-colors mt-auto">
-                        <span>{capability.ctaText || 'Start a project'}</span>
-                        <ArrowRight size={16} className="transition-transform group-hover:translate-x-2" />
-                    </a>
+                    <div className="relative mt-auto">
+                        <button
+                            onClick={() => setShowContactOptions(!showContactOptions)}
+                            className="group flex items-center gap-4 text-[#2E2E2E] font-sans-ui uppercase tracking-widest text-sm hover:text-[#A88C5D] transition-colors"
+                        >
+                            <span>{capability.ctaText || 'Start a project'}</span>
+                            <ArrowRight size={16} className={`transition-transform duration-300 ${showContactOptions ? 'rotate-90' : 'group-hover:translate-x-2'}`} />
+                        </button>
+
+                        <AnimatePresence>
+                            {showContactOptions && (
+                                <>
+                                    <div className="fixed inset-0 z-10" onClick={() => setShowContactOptions(false)} />
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                                        transition={{ duration: 0.2 }}
+                                        className="absolute bottom-full left-0 mb-4 w-64 bg-white shadow-xl p-2 rounded-lg z-20 border border-[#2E2E2E]/5"
+                                    >
+                                        <div className="flex flex-col gap-1">
+                                            {[
+                                                { label: 'Book a call', href: 'https://cal.com/solicate', icon: Phone },
+                                                { label: 'Send a mail', href: 'mailto:mail@solicate.in', icon: Mail },
+                                                { label: 'Send a dm', href: 'https://instagram.com/solicate.in', icon: Instagram }
+                                            ].map((option, idx) => (
+                                                <a
+                                                    key={idx}
+                                                    href={option.href}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="flex items-center gap-3 px-4 py-3 text-[#2E2E2E] hover:bg-[#EEECE7] rounded-md transition-colors group/item"
+                                                    onClick={() => setShowContactOptions(false)}
+                                                >
+                                                    <option.icon size={16} className="text-[#A88C5D] group-hover/item:scale-110 transition-transform" />
+                                                    <span className="font-sans-ui text-sm tracking-wide">{option.label}</span>
+                                                </a>
+                                            ))}
+                                        </div>
+                                    </motion.div>
+                                </>
+                            )}
+                        </AnimatePresence>
+                    </div>
 
                     {/* Decorative large index number */}
                     <div className="absolute bottom-[-10%] right-[-10%] font-serif-display text-[20rem] text-[#2E2E2E]/5 pointer-events-none select-none">
