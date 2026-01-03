@@ -4,49 +4,25 @@ import { Project } from '../types';
 
 const projects: Project[] = [
     {
-        id: 1,
-        title: 'Amtams',
-        role: 'Hometreats Bakery Shop',
-        year: '2025',
-        image: '/images/amtams-img.png',
+        id: 6,
+        title: 'Lumina',
+        role: 'Photography Studio',
+        year: '2026',
+        image: '/images/lumina-img.png',
         aspectRatio: 'aspect-video',
-        link: 'https://amtams.solicate.pecup.in',
-        playbackId: '6SzwPC3JhX023IB1Uy4k301qgBKvWqEVKYeEEatjKygeI',
-        description: 'A cozy digital storefront for artisanal baked goods, featuring warm aesthetics and seamless ordering.'
+        link: 'https://lumina.solicate.in',
+        description: 'A curated visual narrative for a photography studio, focusing on light, composition, and moments captured in time.'
     },
-    // {
-    //     id: 2,
-    //     title: 'Chlorophyll',
-    //     role: 'Organic Laboratory',
-    //     year: '2025',
-    //     image: '/images/chlorophyll-img.png',
-    //     aspectRatio: 'aspect-video',
-    //     link: 'https://chlorophyll.solicate.pecup.in',
-    //     playbackId: 'Pzu8MmdZbCkG173BqyFv3DWSGtO02OrN02woMeGdvJRX8',
-    //     description: 'An immersive platform for an organic laboratory, highlighting sustainable practices through visual storytelling.'
-    // },
     {
-        id: 3,
-        title: 'Kajal',
-        role: 'UGC Portfolio',
+        id: 8,
+        title: 'Prism',
+        role: 'Wedding Event Planner',
         year: '2025',
-        image: '/images/kajal-img.png',
+        image: '/images/prism-img.png',
         aspectRatio: 'aspect-video',
-        link: 'https://kajal.solicate.in',
-        playbackId: '9UTutoAr02u1oS02yDpS00ZfGfYlwSOaj02OtqzUXzzFnnQ',
-        description: 'A dynamic portfolio showcasing user-generated content with a focus on bold typography and fluid transitions.'
+        link: 'https://prism.solicate.in',
+        description: 'An enchanting digital experience for wedding planning, blending organizational clarity with celebratory aesthetics.'
     },
-    // {
-    //     id: 4,
-    //     title: 'Kernelspace',
-    //     role: 'Technical Lab',
-    //     year: '2025',
-    //     image: '/images/kernelspace-img.png',
-    //     aspectRatio: 'aspect-video',
-    //     link: 'https://kernelspace.solicate.pecup.in',
-    //     playbackId: 'VnfaCxXQPMQVNYoIGUDBYPVewBbqmuM00vksMSuhBXdw',
-    //     description: 'A cutting-edge interface for a tech lab, emphasizing precision, data visualization, and modern design principles.'
-    // },
     {
         id: 5,
         title: 'Vaani',
@@ -59,16 +35,6 @@ const projects: Project[] = [
         description: 'A sonic visual experience for a music studio, capturing the essence of sound through rhythmically paced motion.'
     },
     {
-        id: 6,
-        title: 'Lumina',
-        role: 'Photography Studio',
-        year: '2026',
-        image: '/images/lumina-img.png',
-        aspectRatio: 'aspect-video',
-        link: 'https://lumina.solicate.in',
-        description: 'A curated visual narrative for a photography studio, focusing on light, composition, and moments captured in time.'
-    },
-    {
         id: 7,
         title: 'Evolve',
         role: 'Real Estate Company',
@@ -79,15 +45,49 @@ const projects: Project[] = [
         description: 'A modern real estate platform exploring architectural elegance and seamless property discovery.'
     },
     {
-        id: 8,
-        title: 'Prism',
-        role: 'Wedding Event Planner',
+        id: 1,
+        title: 'Amtams',
+        role: 'Hometreats Bakery Shop',
         year: '2025',
-        image: '/images/prism-img.png',
+        image: '/images/amtams-img.png',
         aspectRatio: 'aspect-video',
-        link: 'https://prism.solicate.in',
-        description: 'An enchanting digital experience for wedding planning, blending organizational clarity with celebratory aesthetics.'
+        link: 'https://amtams.solicate.pecup.in',
+        playbackId: '6SzwPC3JhX023IB1Uy4k301qgBKvWqEVKYeEEatjKygeI',
+        description: 'A cozy digital storefront for artisanal baked goods, featuring warm aesthetics and seamless ordering.'
     },
+    {
+        id: 3,
+        title: 'Kajal',
+        role: 'UGC Portfolio',
+        year: '2025',
+        image: '/images/kajal-img.png',
+        aspectRatio: 'aspect-video',
+        link: 'https://kajal.solicate.in',
+        playbackId: '9UTutoAr02u1oS02yDpS00ZfGfYlwSOaj02OtqzUXzzFnnQ',
+        description: 'A dynamic portfolio showcasing user-generated content with a focus on bold typography and fluid transitions.'
+    },
+    // {
+    //     id: 2,
+    //     title: 'Chlorophyll',
+    //     role: 'Organic Laboratory',
+    //     year: '2025',
+    //     image: '/images/chlorophyll-img.png',
+    //     aspectRatio: 'aspect-video',
+    //     link: 'https://chlorophyll.solicate.pecup.in',
+    //     playbackId: 'Pzu8MmdZbCkG173BqyFv3DWSGtO02OrN02woMeGdvJRX8',
+    //     description: 'An immersive platform for an organic laboratory, highlighting sustainable practices through visual storytelling.'
+    // },
+    // {
+    //     id: 4,
+    //     title: 'Kernelspace',
+    //     role: 'Technical Lab',
+    //     year: '2025',
+    //     image: '/images/kernelspace-img.png',
+    //     aspectRatio: 'aspect-video',
+    //     link: 'https://kernelspace.solicate.pecup.in',
+    //     playbackId: 'VnfaCxXQPMQVNYoIGUDBYPVewBbqmuM00vksMSuhBXdw',
+    //     description: 'A cutting-edge interface for a tech lab, emphasizing precision, data visualization, and modern design principles.'
+    // },
 ];
 
 const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => {
