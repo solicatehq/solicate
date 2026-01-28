@@ -6,16 +6,17 @@ export interface Testimonial {
     company: string;
     image?: string;
     instagram?: string;
+    website?: string;
     feedbacks?: string[];
 }
 
 export const testimonials: Testimonial[] = [
     {
         id: '1',
-        quote: "I absolutely loved the portfolio! The animations were simple yet unique, making everything look very clean and presentable. Thank you for being so patient and taking the time to explain everything. The portfolio looks perfect yet elegant. It was truly great working with you.",
+        quote: "Thank you for sharing such an amazing portfolio, I absolutely loved it! I really appreciated how you kept the animations simple yet unique, making everything look very clean and presentable. It was truly great working with you.",
         author: "Kajal Goyal",
         role: "UGC Content Creator",
-        company: "Portfolio",
+        company: "Kaylife",
         image: "/kajal-goyal.jpg",
         instagram: "https://www.instagram.com/kay.life173/",
         feedbacks: [
@@ -32,6 +33,7 @@ export const testimonials: Testimonial[] = [
         company: "Luxe Clicks",
         image: "/ayesha-malkani.jpg",
         instagram: "https://www.instagram.com/luxe_clicks__/",
+        website: "https://luxe.solicate.in",
         feedbacks: [
             "Working with solicate was best decision for making my portfolio. The way you design it, the way you give honest suggestions, its really professional. Looking forward to work with you again. Wish you luck for your success."
         ]
