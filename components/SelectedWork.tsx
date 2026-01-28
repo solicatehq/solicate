@@ -24,6 +24,46 @@ const projects: Project[] = [
         description: 'An enchanting digital experience for wedding planning, blending organizational clarity with celebratory aesthetics.'
     },
     {
+        id: 9,
+        title: 'Lumia',
+        role: 'Dental Clinic',
+        year: '2025',
+        image: 'https://placehold.co/1920x1080/EEECE7/31343C?text=Lumia',
+        aspectRatio: 'aspect-video',
+        link: 'https://lumia.solicate.in',
+        description: 'A pristine digital presence for a dental clinic, emphasizing care, comfort, and clinical excellence.'
+    },
+    {
+        id: 10,
+        title: 'Aura',
+        role: 'Unisex Salon',
+        year: '2025',
+        image: 'https://placehold.co/1920x1080/EEECE7/31343C?text=Aura',
+        aspectRatio: 'aspect-video',
+        link: 'https://aurasalon.solicate.in/',
+        description: 'A stylish and modern interface for a unisex salon, reflecting personal grooming and contemporary aesthetics.'
+    },
+    {
+        id: 11,
+        title: 'The Haven',
+        role: 'Quiet Luxury',
+        year: '2025',
+        image: 'https://placehold.co/1920x1080/EEECE7/31343C?text=Haven',
+        aspectRatio: 'aspect-video',
+        link: 'https://haven.solicate.in/',
+        description: 'A digital sanctuary for quiet luxury, emphasizing minimalism, refined living, and understated elegance.'
+    },
+    {
+        id: 12,
+        title: 'Ember',
+        role: 'Coffee House',
+        year: '2025',
+        image: 'https://placehold.co/1920x1080/EEECE7/31343C?text=Ember',
+        aspectRatio: 'aspect-video',
+        link: 'https://ember.solicate.in',
+        description: 'A warm, roasted aesthetic for a coffee brand, blending sensory appeal with digital convenience.'
+    },
+    {
         id: 5,
         title: 'Vaani',
         role: 'Music Studio',
