@@ -9,7 +9,7 @@ export interface Project {
 
   aspectRatio?: string;
   link?: string;
-  playbackId?: string;
+
   description?: string;
 }
 

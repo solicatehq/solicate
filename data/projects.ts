@@ -10,7 +10,6 @@ export const projects: (Project & { category: string })[] = [
         image: '/images/kajal-img.png',
         aspectRatio: 'aspect-video',
         link: 'https://kajal.solicate.in',
-        playbackId: '9UTutoAr02u1oS02yDpS00ZfGfYlwSOaj02OtqzUXzzFnnQ',
         category: 'UGC Creator Portfolios',
         description: 'A dynamic portfolio showcasing user-generated content with a focus on bold typography and fluid transitions.'
     },
@@ -34,7 +33,6 @@ export const projects: (Project & { category: string })[] = [
         image: '/images/vaani-img.png',
         aspectRatio: 'aspect-video',
         link: 'https://vaani.solicate.pecup.in',
-        playbackId: '8RNpU01rebBYdeGxyUa52HJSPPDBfjQFJJHEv9KV00RgE',
         category: 'Personal Portfolios',
         description: 'A sonic visual experience for a music studio, capturing the essence of sound through rhythmically paced motion.'
     },
@@ -58,7 +56,6 @@ export const projects: (Project & { category: string })[] = [
         image: '/images/amtams-img.png',
         aspectRatio: 'aspect-video',
         link: 'https://amtams.solicate.pecup.in',
-        playbackId: '6SzwPC3JhX023IB1Uy4k301qgBKvWqEVKYeEEatjKygeI',
         category: 'Restaurant & Café Websites',
         description: 'A cozy digital storefront for artisanal baked goods, featuring warm aesthetics and seamless ordering.'
     },

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { projects, categories } from '../data/projects';
 import { ArrowLeft } from 'lucide-react';
-import MuxPlayer from "@mux/mux-player-react";
+
 
 export const CategoryPage: React.FC = () => {
     const { category: slug } = useParams<{ category: string }>();
@@ -43,26 +43,11 @@ export const CategoryPage: React.FC = () => {
                     {categoryProjects.map((project, index) => (
                         <div key={project.id} className="group">
                             <a href={project.link} target="_blank" rel="noopener noreferrer" className="block relative aspect-video overflow-hidden rounded-md bg-[#EEECE7] border border-black/5 shadow-sm mb-8">
-                                {project.playbackId ? (
-                                    <MuxPlayer
-                                        playbackId={project.playbackId}
-                                        metadata={{
-                                            video_id: `video-${project.id}`,
-                                            video_title: project.title,
-                                        }}
-                                        streamType="on-demand"
-                                        autoPlay={true}
-                                        muted
-                                        loop
-                                        className="w-full h-full object-cover"
-                                    />
-                                ) : (
-                                    <img
-                                        src={project.image}
-                                        alt={project.title}
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                    />
-                                )}
+                                <img
+                                    src={project.image}
+                                    alt={project.title}
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
                             </a>
 
                             <div className="flex flex-col md:flex-row justify-between items-start gap-4">
