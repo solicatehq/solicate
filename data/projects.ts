@@ -3,6 +3,17 @@ import { Project } from '../types';
 export const projects: (Project & { category: string })[] = [
     // UGC Creator Portfolios
     {
+        id: 13,
+        title: 'Ayesha Malkani',
+        role: 'UGC Portfolio',
+        year: '2025',
+        image: '/images/ayesha-malkani.png',
+        aspectRatio: 'aspect-video',
+        link: 'https://luxe.solicate.in',
+        category: 'UGC Creator Portfolios',
+        description: 'A premium UGC portfolio for Ayesha Malkani, featuring high-end aesthetics and curated content showcases.'
+    },
+    {
         id: 3,
         title: 'Kajal',
         role: 'UGC Portfolio',
