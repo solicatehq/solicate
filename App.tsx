@@ -11,19 +11,11 @@ import { CustomCursor } from './components/CustomCursor';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    ScrollTrigger.refresh();
-  }, [pathname]);
-
-  return null;
-}
 
 function AppContent() {
   const lenisRef = useRef<Lenis | null>(null);
+  const { pathname, hash } = useLocation();
 
   useLayoutEffect(() => {
     const lenis = new Lenis({
@@ -44,16 +36,67 @@ function AppContent() {
 
     gsap.ticker.lagSmoothing(0);
 
+    // Disable native scroll restoration to let React handle it
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
     return () => {
       gsap.ticker.remove(lenis.raf);
       lenis.destroy();
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'auto';
+      }
     };
   }, []);
+
+  // Handle scroll to hash/top on route change using Lenis
+  useLayoutEffect(() => {
+    // Use requestAnimationFrame to ensure DOM is painted before scrolling
+    const handleScroll = () => {
+      if (hash) {
+        const id = hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          const targetPosition = element.getBoundingClientRect().top + window.scrollY - 50;
+
+          // Try Lenis first
+          if (lenisRef.current) {
+            lenisRef.current.scrollTo(targetPosition, { immediate: true, force: true });
+          }
+
+          // Native scroll as fallback - ensures scroll happens even if Lenis fails
+          window.scrollTo({ top: targetPosition, behavior: 'instant' });
+        }
+      } else {
+        // Reset to top
+        window.scrollTo(0, 0);
+        if (lenisRef.current) {
+          lenisRef.current.scrollTo(0, { immediate: true, force: true });
+        }
+      }
+      ScrollTrigger.refresh();
+    };
+
+    // Wait for next frame then add delay for DOM to fully settle after route change
+    const rafId = requestAnimationFrame(() => {
+      const timeout = setTimeout(handleScroll, 150);
+      // Store timeout ID for cleanup
+      (rafId as any).timeoutId = timeout;
+    });
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      if ((rafId as any).timeoutId) {
+        clearTimeout((rafId as any).timeoutId);
+      }
+    };
+  }, [pathname, hash]);
 
   return (
     <div className="antialiased selection:bg-[#2E2E2E] selection:text-[#EEECE7]">
       <CustomCursor />
-      <ScrollToTop />
+
 
       <Routes>
         <Route path="/" element={<Home />} />

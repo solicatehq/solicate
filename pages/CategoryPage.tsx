@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { projects, categories } from '../data/projects';
 import { ArrowLeft } from 'lucide-react';
@@ -8,9 +8,7 @@ export const CategoryPage: React.FC = () => {
     const { category: slug } = useParams<{ category: string }>();
 
     // Scroll to top on mount
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [slug]);
+
 
     const categoryInfo = categories.find(c => c.slug === slug);
     const categoryProjects = projects.filter(p => {
@@ -27,9 +25,9 @@ export const CategoryPage: React.FC = () => {
     return (
         <main className="relative z-10 bg-[#EEECE7] min-h-screen">
             <div className="pt-32 px-6 md:px-12 max-w-7xl mx-auto">
-                <Link to="/" className="inline-flex items-center gap-2 text-nordic-charcoal/60 hover:text-nordic-charcoal transition-colors mb-8 group">
+                <Link to="/#selected-work" className="inline-flex items-center gap-2 text-nordic-charcoal/60 hover:text-nordic-charcoal transition-colors mb-8 group">
                     <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-                    <span className="text-sm font-medium tracking-wide">Back to Home</span>
+                    <span className="text-sm font-medium tracking-wide">Back to Menu</span>
                 </Link>
 
                 <div className="mb-20">
