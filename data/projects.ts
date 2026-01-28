@@ -23,7 +23,7 @@ export const projects: (Project & { category: string })[] = [
         image: '/images/lumina-img.png',
         aspectRatio: 'aspect-video',
         link: 'https://lumina.solicate.in',
-        category: 'Personal Portfolios',
+        category: 'Photography & Videography Studios',
         description: 'A curated visual narrative for a photography studio, focusing on light, composition, and moments captured in time.'
     },
     {
@@ -71,7 +71,7 @@ export const projects: (Project & { category: string })[] = [
         image: '/images/prism-img.png',
         aspectRatio: 'aspect-video',
         link: 'https://prism.solicate.in',
-        category: 'Wedding Photography Studios',
+        category: 'Photography & Videography Studios',
         description: 'An enchanting digital experience for wedding planning, blending organizational clarity with celebratory aesthetics.'
     },
     // Dental & Salon Websites
@@ -127,36 +127,42 @@ export const categories = [
         title: 'UGC Creator Portfolios',
         slug: 'ugc-creator-portfolios',
         image: '/images/kajal-img.png',
-        description: 'Showcase your content with portfolios designed for UGC creators, influencers, and digital content specialists.'
+        description: 'UGC Content Creator, Influencer Media Kit, Digital Content Specialist, Social Media Manager'
     },
     {
         title: 'Personal Portfolios',
         slug: 'personal-portfolios',
-        image: '/images/lumina-img.png',
-        description: 'Professional portfolios for video editors, photographers, cinematographers, music producers, and creative professionals.'
+        image: '/images/vaani-img.png',
+        description: 'Video Editor Portfolio, Trader Portfolio, Youtuber Portfolio, Content Creator Portfolio, Music Producer'
     },
     {
         title: 'Restaurant & Café Websites',
         slug: 'restaurant-cafe-websites',
         image: '/images/amtams-img.png',
-        description: 'Appetizing digital experiences for restaurants, coffee shops, bakeries, and culinary businesses.'
+        description: 'Coffee House, Bakery Shop, Fine Dining Restaurant, Cloud Kitchen, Food Truck'
     },
     {
-        title: 'Wedding Photography Studios',
-        slug: 'wedding-photography-studios',
+        title: 'Photography & Videography Studios',
+        slug: 'photography-videography-studios',
         image: '/images/prism-img.png',
-        description: 'Elegant websites for wedding photographers, event planners, bridal studios, and celebration specialists.'
+        description: 'Wedding Photography, Commercial Shoots, Event Videography, Fashion Portfolio, Brand Campaigns'
     },
     {
         title: 'Dental & Salon Websites',
         slug: 'dental-salon-websites',
         image: 'https://placehold.co/1920x1080/EEECE7/31343C?text=Lumia',
-        description: 'Modern, clean websites for dental clinics, beauty salons, spas, and wellness centers.'
+        description: 'Dental Clinic, Unisex Salon, Spa & Wellness Center, Dermatology Clinic, Physiotherapy'
     },
     {
         title: 'Real Estate & Lifestyle Brands',
         slug: 'real-estate-lifestyle-brands',
         image: '/images/evolve-img.png',
-        description: 'Sophisticated platforms for real estate agencies, luxury brands, interior designers, and lifestyle businesses.'
+        description: 'Real Estate Agency, Interior Design Firm, Luxury Lifestyle Brand, Architecture Firm'
+    },
+    {
+        title: 'Other',
+        slug: 'other',
+        image: 'https://placehold.co/1920x1080/EEECE7/31343C?text=Other',
+        description: 'SaaS Products, Custom Web Development, Mobile Applications, Dashboards, API Integrations'
     },
 ];
