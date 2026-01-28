@@ -13,8 +13,8 @@ export const Home: React.FC = () => {
         <main className="relative z-10 bg-[#EEECE7] shadow-2xl rounded-b-[3rem]">
             <Hero />
             <Ethos
-                text="We shape ideas that settle like echoes in quiet rooms."
-                highlightWords={["echoes"]}
+                text="We design great websites, landing pages, e-commerce websites, and build full stack apps."
+                highlightWords={["websites", "landing pages", "e-commerce", "full stack apps"]}
                 highlightColor="#D35400"
             />
             <ShowcaseCategories />
