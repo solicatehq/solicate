@@ -6,6 +6,7 @@ import { Process } from '../components/Process';
 import { Journal } from '../components/Journal';
 import { Ethos } from '../components/Ethos';
 import { Principles } from '../components/Principles';
+import { Testimonials } from '../components/Testimonials';
 
 
 export const Home: React.FC = () => {
@@ -27,6 +28,7 @@ export const Home: React.FC = () => {
             <Process />
 
             <Journal />
+            <Testimonials />
         </main>
     );
 };
