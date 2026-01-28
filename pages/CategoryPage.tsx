@@ -39,7 +39,7 @@ export const CategoryPage: React.FC = () => {
                     <div className="h-px w-24 bg-nordic-charcoal/20" />
                 </div>
 
-                <div className="grid grid-cols-1 gap-24 pb-32">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16 pb-32">
                     {categoryProjects.map((project, index) => (
                         <div key={project.id} className="group">
                             <a href={project.link} target="_blank" rel="noopener noreferrer" className="block relative aspect-video overflow-hidden rounded-md bg-[#EEECE7] border border-black/5 shadow-sm mb-8">

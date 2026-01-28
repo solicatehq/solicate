@@ -6,7 +6,7 @@ import { Process } from '../components/Process';
 import { Journal } from '../components/Journal';
 import { Ethos } from '../components/Ethos';
 import { Principles } from '../components/Principles';
-import { OtherWork } from '../components/OtherWork';
+
 
 export const Home: React.FC = () => {
     return (
@@ -25,7 +25,7 @@ export const Home: React.FC = () => {
                 highlightColor="#D35400"
             />
             <Process />
-            <OtherWork />
+
             <Journal />
         </main>
     );

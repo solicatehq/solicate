@@ -33,8 +33,30 @@ export const projects: (Project & { category: string })[] = [
         image: '/images/vaani-img.png',
         aspectRatio: 'aspect-video',
         link: 'https://vaani.solicate.pecup.in',
-        category: 'Personal Portfolios',
+        category: 'Other',
         description: 'A sonic visual experience for a music studio, capturing the essence of sound through rhythmically paced motion.'
+    },
+    {
+        id: 2,
+        title: 'Chlorophyll',
+        role: 'Organic Laboratory',
+        year: '2025',
+        image: '/images/chlorophyll-img.png',
+        aspectRatio: 'aspect-video',
+        link: 'https://chlorophyll.solicate.pecup.in',
+        category: 'Other',
+        description: 'An immersive platform for an organic laboratory, highlighting sustainable practices through visual storytelling.'
+    },
+    {
+        id: 4,
+        title: 'Kernelspace',
+        role: 'Technical Lab',
+        year: '2025',
+        image: '/images/kernelspace-img.png',
+        aspectRatio: 'aspect-video',
+        link: 'https://kernelspace.solicate.pecup.in',
+        category: 'Other',
+        description: 'A cutting-edge interface for a tech lab, emphasizing precision, data visualization, and modern design principles.'
     },
     // Restaurant & Café Websites
     {
@@ -159,7 +181,7 @@ export const categories = [
     {
         title: 'Other',
         slug: 'other',
-        image: 'https://placehold.co/1920x1080/EEECE7/31343C?text=Other',
+        image: '/images/vaani-img.png',
         description: 'SaaS Products, Custom Web Development, Mobile Applications, Dashboards, API Integrations'
     },
 ];
