@@ -24,6 +24,17 @@ export const projects: (Project & { category: string })[] = [
         category: 'UGC Creator Portfolios',
         description: 'A dynamic portfolio showcasing user-generated content with a focus on bold typography and fluid transitions.'
     },
+    {
+        id: 15,
+        title: 'Sameera Fatima',
+        role: 'UGC Portfolio',
+        year: '2026',
+        image: '/images/sameera.png',
+        aspectRatio: 'aspect-video',
+        link: 'https://sameera.solicate.in',
+        category: 'UGC Creator Portfolios',
+        description: 'A pure luxury and minimal design portfolio for Sameera Fatima, featuring elegant aesthetics and curated content.'
+    },
     // Personal Portfolios
     {
         id: 14,

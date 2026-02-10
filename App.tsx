@@ -79,16 +79,15 @@ function AppContent() {
     };
 
     // Wait for next frame then add delay for DOM to fully settle after route change
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
     const rafId = requestAnimationFrame(() => {
-      const timeout = setTimeout(handleScroll, 150);
-      // Store timeout ID for cleanup
-      (rafId as any).timeoutId = timeout;
+      timeoutId = setTimeout(handleScroll, 150);
     });
 
     return () => {
       cancelAnimationFrame(rafId);
-      if ((rafId as any).timeoutId) {
-        clearTimeout((rafId as any).timeoutId);
+      if (timeoutId) {
+        clearTimeout(timeoutId);
       }
     };
   }, [pathname, hash]);

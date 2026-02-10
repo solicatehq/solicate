@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { projects, categories } from '../data/projects';
 import { ArrowLeft } from 'lucide-react';
@@ -8,6 +8,9 @@ export const CategoryPage: React.FC = () => {
     const { category: slug } = useParams<{ category: string }>();
 
     // Scroll to top on mount
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
 
     const categoryInfo = categories.find(c => c.slug === slug);

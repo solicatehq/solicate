@@ -38,5 +38,18 @@ export const testimonials: Testimonial[] = [
         feedbacks: [
             "Working with solicate was best decision for making my portfolio. The way you design it, the way you give honest suggestions, its really professional. Looking forward to work with you again. Wish you luck for your success."
         ]
+    },
+    {
+        id: '3',
+        quote: "This look soo good and elegant with pure luxury and minimal design exactly how I wanted it. Thank u soo much for making my Protofolio looks this elegant and pretty 💗",
+        author: "Sameera Fatima",
+        role: "UGC Content Creator",
+        company: "Glimpses of Mine",
+        image: "/sameera-fatima.jpg",
+        instagram: "https://www.instagram.com/glimpsesofmine_/",
+        website: "https://sameera.solicate.in",
+        feedbacks: [
+            "This look soo good and elegant with pure luxury and minimal design exactly how I wanted it\nThank u soo much for making my Protofolio looks this elegant and pretty 💗"
+        ]
     }
 ];
