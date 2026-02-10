@@ -37,6 +37,17 @@ export const projects: (Project & { category: string })[] = [
     },
     // Personal Portfolios
     {
+        id: 16,
+        title: 'Protik Das',
+        role: 'Creative Video Editor',
+        year: '2026',
+        image: '/images/protik.png',
+        aspectRatio: 'aspect-video',
+        link: 'https://protik.solicate.in',
+        category: 'Personal Portfolios',
+        description: 'A creative video editor portfolio for Protik Das, showcasing storytelling and visual editing skills.'
+    },
+    {
         id: 14,
         title: 'Sankho Kun',
         role: 'YouTuber Portfolio',
