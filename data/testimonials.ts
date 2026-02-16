@@ -59,7 +59,7 @@ export const testimonials: Testimonial[] = [
         role: "Creative Video Editor",
         company: "Freelance",
         image: "/protik.png",
-        instagram: "https://www.instagram.com/protik_das02/",
+        instagram: "https://www.instagram.com/editorprotik/",
         website: "https://protik.solicate.in",
         feedbacks: [
             "I had a great experience working with Solicate. They designed a portfolio for me, and the process was smooth and professional from start to finish. What stood out most was their focus on clarity and thoughtful design rather than relying on generic templates. The result felt tailored, clean, and genuinely aligned with my personal brand.",
