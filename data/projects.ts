@@ -45,7 +45,7 @@ export const projects: (Project & { category: string })[] = [
         aspectRatio: 'aspect-video',
         link: 'https://protik.solicate.in',
         category: 'Personal Portfolios',
-        description: 'A creative video editor portfolio for Protik Das, showcasing storytelling and visual editing skills.'
+        description: 'A tailored, clean, and purposeful portfolio for Protik Das, showcasing creative video editing with clarity and thoughtful design.'
     },
     {
         id: 14,

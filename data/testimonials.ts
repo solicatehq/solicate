@@ -51,5 +51,19 @@ export const testimonials: Testimonial[] = [
         feedbacks: [
             "This look soo good and elegant with pure luxury and minimal design exactly how I wanted it\nThank u soo much for making my Protofolio looks this elegant and pretty 💗"
         ]
+    },
+    {
+        id: '4',
+        quote: "I had a great experience working with Solicate. The process was smooth and professional from start to finish. What stood out most was their focus on clarity and thoughtful design rather than relying on generic templates. The result felt tailored, clean, and genuinely aligned with my personal brand.",
+        author: "Protik Das",
+        role: "Creative Video Editor",
+        company: "Freelance",
+        image: "/protik.png",
+        instagram: "https://www.instagram.com/protik_das02/",
+        website: "https://protik.solicate.in",
+        feedbacks: [
+            "I had a great experience working with Solicate. They designed a portfolio for me, and the process was smooth and professional from start to finish. What stood out most was their focus on clarity and thoughtful design rather than relying on generic templates. The result felt tailored, clean, and genuinely aligned with my personal brand.",
+            "Communication was straightforward, expectations were handled transparently, and they delivered something that I can confidently showcase. If you’re looking for a creative team that prioritizes trust, usability, and purposeful design over hype, Solicate is worth considering."
+        ]
     }
 ];
