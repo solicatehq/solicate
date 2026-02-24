@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Analytics } from "@vercel/analytics/react"
 import { Home } from './pages/Home';
 import { CategoryPage } from './pages/CategoryPage';
+import { JafarPitchDeck } from './pages/JafarPitchDeck';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
 
@@ -100,9 +101,10 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/work/:category" element={<CategoryPage />} />
+        <Route path="/jafar" element={<JafarPitchDeck />} />
       </Routes>
 
-      <Footer />
+      {pathname !== '/jafar' && <Footer />}
 
       {/* Texture Overlay (Dust) */}
       <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.03] mix-blend-overlay"
