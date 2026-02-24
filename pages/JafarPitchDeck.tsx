@@ -98,7 +98,7 @@ export function JafarPitchDeck() {
                         <h1 className="font-serif-display text-5xl md:text-7xl lg:text-[7.5rem] print:text-6xl leading-[1.05] tracking-tight mb-12 print:mb-6 max-w-5xl block">
                             Turning Paid Ads <br className="hidden md:block print:block" />
                             Into a Predictable <br className="hidden lg:block print:block" />
-                            <span className="text-[#2E2E2E]/70 italic">Revenue Engine.</span>
+                            <span className="text-[#D35400] italic">Revenue Engine.</span>
                         </h1>
                     </div>
                 </section>
@@ -227,29 +227,46 @@ export function JafarPitchDeck() {
                 </section>
 
                 {/* 7. Contact / Next Steps */}
-                <section className="relative min-h-[70vh] flex flex-col justify-center items-center text-center p-8 md:p-16 lg:p-24 print-section">
-                    <div className="w-full max-w-3xl mx-auto prevent-break">
-                        <p className="text-[#D35400] text-xs uppercase tracking-[0.25em] mb-8 print:mb-4 font-medium">Ready to scale?</p>
-                        <h2 className="font-serif-display text-4xl md:text-6xl print:text-5xl mb-12 print:mb-8 leading-tight">
-                            Let's build your revenue engine.
-                        </h2>
-
-                        <div className="flex flex-col items-center justify-center gap-6 print:gap-4">
-                            <span className="font-serif-display text-3xl md:text-5xl print:text-4xl text-[#2E2E2E]">Jafar Alisha</span>
-
-                            <div className="flex flex-col items-center gap-4 mt-2 print:gap-2">
-                                <span className="text-[#2E2E2E]/80 text-lg md:text-xl print:text-base font-medium tracking-wider">
-                                    9030808621
-                                </span>
-                                <span className="text-[#2E2E2E]/80 text-lg md:text-xl print:text-base font-medium tracking-wide">
-                                    work.jafaralisha@gmail.com
-                                </span>
-                            </div>
+                <section className="relative min-h-[100vh] flex flex-col justify-center p-8 md:p-16 lg:p-24 print-section">
+                    <div className="w-full h-full flex flex-col justify-between prevent-break">
+                        <div>
+                            <p className="text-[#D35400] text-xs uppercase tracking-[0.25em] mb-6 print:mb-4 font-medium">The Next Move</p>
+                            <h2 className="font-serif-display text-5xl md:text-7xl lg:text-[6.5rem] print:text-6xl mb-12 print:mb-8 leading-tight tracking-tight">
+                                Let's build your <br className="hidden md:block print:block" /> <span className="text-[#D35400] italic">revenue engine.</span>
+                            </h2>
                         </div>
 
-                        <div className="mt-24 print:mt-16 pt-8 print:pt-4 border-t border-[#2E2E2E]/10 flex flex-col md:flex-row print:flex-row items-center justify-between text-xs tracking-widest uppercase text-[#2E2E2E]/50 w-full">
-                            <span>Solicate Performance</span>
-                            <span className="mt-4 md:mt-0 print:mt-0">© {new Date().getFullYear()}</span>
+                        <div className="grid grid-cols-1 md:grid-cols-2 print:grid-cols-[1fr_1.5fr] gap-12 print:gap-8 mt-auto w-full max-w-6xl">
+
+                            {/* Contact Box Dark */}
+                            <div className="bg-[#2E2E2E] text-[#EEECE7] p-10 print:p-8 flex flex-col justify-between">
+                                <div>
+                                    <p className="font-serif-display text-4xl md:text-5xl print:text-4xl mb-2">Jafar Alisha</p>
+                                    <p className="text-[#EEECE7]/70 font-light text-sm tracking-[0.2em] uppercase">Head of Performance Marketing</p>
+                                </div>
+                                <div className="mt-16 print:mt-12 space-y-6 print:space-y-4">
+                                    <div>
+                                        <p className="text-[#EEECE7]/50 text-[10px] uppercase tracking-[0.25em] mb-2 print:mb-1">Phone</p>
+                                        <p className="text-xl print:text-lg tracking-wider font-light">+91 90308 08621</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-[#EEECE7]/50 text-[10px] uppercase tracking-[0.25em] mb-2 print:mb-1">Email</p>
+                                        <p className="text-xl print:text-lg tracking-wide font-light">work.jafaralisha@gmail.com</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Additional Info / Closing Quote */}
+                            <div className="flex flex-col justify-end p-4 print:p-0">
+                                <p className="text-2xl md:text-3xl lg:text-4xl print:text-3xl leading-[1.4] text-[#2E2E2E] font-light mb-16 print:mb-10 max-w-md">
+                                    "Stop burning cash on vanity. <br className="hidden md:block print:block" /> Let's lock in your unit economics and scale <i className="text-[#D35400]">profitably.</i>"
+                                </p>
+
+                                <div className="w-full border-t border-[#2E2E2E]/20 pt-8 print:pt-4 flex flex-col md:flex-row print:flex-row md:items-center print:items-center justify-between text-xs tracking-widest uppercase text-[#2E2E2E]/50">
+                                    <span className="mb-4 md:mb-0 print:mb-0 text-[#2E2E2E] font-medium">Solicate Performance</span>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </section>
